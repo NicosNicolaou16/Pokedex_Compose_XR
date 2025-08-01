@@ -53,35 +53,25 @@ fun SharedTransitionScope.PokemonListScreen(
     navController: NavController,
     animatedVisibilityScope: AnimatedVisibilityScope,
 ) {
-    /*Subspace {
-        SpatialPanel(
-            SubspaceModifier
-                .height(824.dp)
-                .width(1400.dp)
-                .movable()
-                .resizable()
-        ) {*/
-            Scaffold(topBar = {
-                CustomToolbar(
-                    title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
+    Scaffold(topBar = {
+        CustomToolbar(
+            title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
+        )
+    }) { paddingValues ->
+        GridViewPokemonList(
+            animatedVisibilityScope = animatedVisibilityScope,
+            paddingValues = paddingValues,
+            listener = {
+                navController.navigate(
+                    PokemonDetails(
+                        url = it.url?.encodeStringUrl() ?: "",
+                        imageUrl = it.imageUrl?.encodeStringUrl() ?: "",
+                        name = it.name,
+                    )
                 )
-            }) { paddingValues ->
-                GridViewPokemonList(
-                    animatedVisibilityScope = animatedVisibilityScope,
-                    paddingValues = paddingValues,
-                    listener = {
-                        navController.navigate(
-                            PokemonDetails(
-                                url = it.url?.encodeStringUrl() ?: "",
-                                imageUrl = it.imageUrl?.encodeStringUrl() ?: "",
-                                name = it.name,
-                            )
-                        )
-                    },
-                )
-            }
-        /*}
-    }*/
+            },
+        )
+    }
 }
 
 @Composable
