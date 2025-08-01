@@ -29,6 +29,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.xr.compose.spatial.Subspace
+import androidx.xr.compose.subspace.SpatialPanel
+import androidx.xr.compose.subspace.layout.SubspaceModifier
+import androidx.xr.compose.subspace.layout.height
+import androidx.xr.compose.subspace.layout.movable
+import androidx.xr.compose.subspace.layout.resizable
+import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
@@ -46,25 +53,35 @@ fun SharedTransitionScope.PokemonListScreen(
     navController: NavController,
     animatedVisibilityScope: AnimatedVisibilityScope,
 ) {
-    Scaffold(topBar = {
-        CustomToolbar(
-            title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
-        )
-    }) { paddingValues ->
-        GridViewPokemonList(
-            animatedVisibilityScope = animatedVisibilityScope,
-            paddingValues = paddingValues,
-            listener = {
-                navController.navigate(
-                    PokemonDetails(
-                        url = it.url?.encodeStringUrl() ?: "",
-                        imageUrl = it.imageUrl?.encodeStringUrl() ?: "",
-                        name = it.name,
-                    )
+    /*Subspace {
+        SpatialPanel(
+            SubspaceModifier
+                .height(824.dp)
+                .width(1400.dp)
+                .movable()
+                .resizable()
+        ) {*/
+            Scaffold(topBar = {
+                CustomToolbar(
+                    title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
                 )
-            },
-        )
-    }
+            }) { paddingValues ->
+                GridViewPokemonList(
+                    animatedVisibilityScope = animatedVisibilityScope,
+                    paddingValues = paddingValues,
+                    listener = {
+                        navController.navigate(
+                            PokemonDetails(
+                                url = it.url?.encodeStringUrl() ?: "",
+                                imageUrl = it.imageUrl?.encodeStringUrl() ?: "",
+                                name = it.name,
+                            )
+                        )
+                    },
+                )
+            }
+        /*}
+    }*/
 }
 
 @Composable

@@ -38,6 +38,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.xr.compose.spatial.Subspace
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
