@@ -1,7 +1,7 @@
 package com.nicos.pokedex_compose_xr.domain.di.handing_error
 
 import android.content.Context
-import com.nicos.pokedex_compose.utils.generic_classes.HandlingError
+import com.nicos.pokedex_compose_xr.utils.generic_classes.HandlingError
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
