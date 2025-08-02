@@ -2,18 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature android:name="android.software.xr.api.spatial" android:required="false"/>
+    <uses-feature
+        android:name="android.software.xr.api.spatial"
+        android:required="false" />
 
     <application
         android:name=".PokemonXRApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Pokedex_Compose_XR">
+        android:theme="@style/Theme.Pokedex_Compose_XR"
+        tools:targetApi="33">
+
+        <property
+            android:name="android.window.PROPERTY_XR_ACTIVITY_START_MODE"
+            android:value="XR_ACTIVITY_START_MODE_HOME_SPACE_MANAGED" />
+
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
