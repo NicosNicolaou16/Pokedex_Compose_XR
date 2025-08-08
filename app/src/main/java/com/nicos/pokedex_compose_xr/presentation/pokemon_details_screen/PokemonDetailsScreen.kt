@@ -39,6 +39,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.xr.compose.spatial.Subspace
+import androidx.xr.compose.subspace.SpatialPanel
+import androidx.xr.compose.subspace.layout.SubspaceModifier
+import androidx.xr.compose.subspace.layout.height
+import androidx.xr.compose.subspace.layout.movable
+import androidx.xr.compose.subspace.layout.resizable
+import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
@@ -71,25 +77,25 @@ fun SharedTransitionScope.PokemonDetailsScreen(
         name = name
     )
     pokemonDetailsViewModel.offline(imageUrl = imageUrl, name = name)
-    Scaffold(
-        topBar = {
-            CustomToolbar(
-                title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_details),
-                color = Color(color = color.intValue),
-                backButton = backButton
-            )
-        }) { paddingValues ->
-        DetailsScreen(
-            paddingValues = paddingValues,
-            pokemonDetailsViewModel = pokemonDetailsViewModel,
-            animatedVisibilityScope = animatedVisibilityScope,
-            color = color
-        )
-    }
+            Scaffold(
+                topBar = {
+                    CustomToolbar(
+                        title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_details),
+                        color = Color(color = color.intValue),
+                        backButton = backButton
+                    )
+                }) { paddingValues ->
+                DetailsScreen(
+                    paddingValues = paddingValues,
+                    pokemonDetailsViewModel = pokemonDetailsViewModel,
+                    animatedVisibilityScope = animatedVisibilityScope,
+                    color = color
+                )
+            }
 
-    LaunchedEffect(Unit) {
-        changeSystemBarStyle(SystemBarStyle.dark(color.intValue))
-    }
+            LaunchedEffect(Unit) {
+                changeSystemBarStyle(SystemBarStyle.dark(color.intValue))
+            }
 }
 
 @Composable
