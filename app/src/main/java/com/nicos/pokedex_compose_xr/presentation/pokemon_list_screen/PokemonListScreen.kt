@@ -37,6 +37,7 @@ import androidx.navigation.NavController
 import androidx.xr.compose.spatial.Subspace
 import androidx.xr.compose.subspace.SpatialPanel
 import androidx.xr.compose.subspace.SpatialRow
+import androidx.xr.compose.subspace.layout.PlaneSemantic
 import androidx.xr.compose.subspace.layout.SubspaceModifier
 import androidx.xr.compose.subspace.layout.height
 import androidx.xr.compose.subspace.layout.movable
@@ -72,13 +73,12 @@ fun SharedTransitionScope.PokemonListScreen(
     Subspace {
         SpatialRow(
             SubspaceModifier
-                .height(824.dp)
-                //.width(700.dp)
+                .height(1000.dp)
+                .width(1500.dp)
                 .movable()
                 .resizable()
         ) {
             SpatialPanel(SubspaceModifier.height(824.dp).width(500.dp)) {
-
                 Scaffold(topBar = {
                     CustomToolbar(
                         title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
@@ -99,12 +99,15 @@ fun SharedTransitionScope.PokemonListScreen(
             }
 
             if (pk.url != null && pk.imageUrl != null && pk.name != null) {
-                SpatialPanel(SubspaceModifier.height(824.dp).width(1000.dp)) {
+                SpatialPanel(
+                    SubspaceModifier.height(1000.dp).width(700.dp)
+                ) {
                     PokemonDetailsScreen(
                         url = pk.url ?: "",
                         imageUrl = pk.imageUrl ?: "",
                         name = pk.name ?: "",
                         changeSystemBarStyle = changeSystemBarStyle,
+                        animatedVisibilityScope = animatedVisibilityScope
                     )
                 }
             }

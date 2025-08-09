@@ -27,7 +27,7 @@ fun Navigation(changeSystemBarStyle: (SystemBarStyle) -> Unit) {
                 PokemonListScreen(
                     navController,
                     animatedVisibilityScope = this@composable,
-                    changeSystemBarStyle = changeSystemBarStyle
+                    changeSystemBarStyle = changeSystemBarStyle,
                 )
             }
             /*composable<PokemonDetails> {

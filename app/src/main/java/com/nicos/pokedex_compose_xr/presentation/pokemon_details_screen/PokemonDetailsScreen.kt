@@ -63,9 +63,8 @@ fun SharedTransitionScope.PokemonDetailsScreen(
     url: String,
     imageUrl: String,
     name: String,
-    animatedVisibilityScope: AnimatedVisibilityScope? = null,
+    animatedVisibilityScope: AnimatedVisibilityScope,
     changeSystemBarStyle: (SystemBarStyle) -> Unit,
-    backButton: () -> Unit = {},
     pokemonDetailsViewModel: PokemonDetailsViewModel = hiltViewModel()
 ) {
     val color = remember {
@@ -82,7 +81,6 @@ fun SharedTransitionScope.PokemonDetailsScreen(
                     CustomToolbar(
                         title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_details),
                         color = Color(color = color.intValue),
-                        backButton = backButton
                     )
                 }) { paddingValues ->
                 DetailsScreen(
@@ -102,7 +100,7 @@ fun SharedTransitionScope.PokemonDetailsScreen(
 fun SharedTransitionScope.DetailsScreen(
     paddingValues: PaddingValues,
     pokemonDetailsViewModel: PokemonDetailsViewModel,
-    animatedVisibilityScope: AnimatedVisibilityScope?,
+    animatedVisibilityScope: AnimatedVisibilityScope,
     color: MutableIntState,
 ) {
     val pokemonDetailsDataModelList =
@@ -133,7 +131,7 @@ fun SharedTransitionScope.DetailsScreen(
 @Composable
 fun SharedTransitionScope.ImageAndName(
     pokemonDetailsDataModel: PokemonDetailsDataModel,
-    animatedVisibilityScope: AnimatedVisibilityScope?,
+    animatedVisibilityScope: AnimatedVisibilityScope,
     color: MutableIntState,
 ) {
     val context = LocalContext.current
