@@ -22,3 +22,10 @@ Key features include:
 Pokedex Compose XR is both a showcase and a playground for developers interested in building XR apps
 with the AndroidX XR library, offering real-world examples to accelerate experimentation and
 learning.
+
+## Versioning
+
+Target SDK version: 36 <br />
+Minimum SDK version: 29 <br />
+Kotlin version: 2.2.0 <br />
+Gradle version: 8.12.0 <br />
