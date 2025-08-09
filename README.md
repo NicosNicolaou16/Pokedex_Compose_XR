@@ -29,3 +29,7 @@ Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
 Kotlin version: 2.2.0 <br />
 Gradle version: 8.12.0 <br />
+
+# References/Tutorials Follow
+
+https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui <br />
