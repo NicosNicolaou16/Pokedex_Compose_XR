@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     SpatialPanel(
                         SubspaceModifier
                             .height(824.dp)
-                            .width(1400.dp)
+                            .width(700.dp)
                             .movable()
                             .resizable()
                     ) {
