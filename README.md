@@ -23,7 +23,7 @@ Pokedex Compose XR is both a showcase and a playground for developers interested
 with the AndroidX XR library, offering real-world examples to accelerate experimentation and
 learning.
 
-# How to Test Pokedex Compose XR
+## How to Test Pokedex Compose XR
 To run and experiment with Pokedex Compose XR, you’ll need:
 
 1. The latest Canary build of Android Studio – for example, I’m currently using Android Studio
@@ -46,7 +46,7 @@ Minimum SDK version: 29 <br />
 Kotlin version: 2.2.0 <br />
 Gradle version: 8.12.0 <br />
 
-# References/Tutorials Follow
+## References/Tutorials Follow
 
 https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui <br />
 https://android-developers.googleblog.com/2024/12/introducing-android-xr-sdk-developer-preview.html <br />
