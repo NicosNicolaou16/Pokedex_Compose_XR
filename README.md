@@ -33,3 +33,4 @@ Gradle version: 8.12.0 <br />
 # References/Tutorials Follow
 
 https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui <br />
+https://android-developers.googleblog.com/2024/12/introducing-android-xr-sdk-developer-preview.html <br />
