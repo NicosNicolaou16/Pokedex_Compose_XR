@@ -23,6 +23,22 @@ Pokedex Compose XR is both a showcase and a playground for developers interested
 with the AndroidX XR library, offering real-world examples to accelerate experimentation and
 learning.
 
+# How to Test Pokedex Compose XR
+To run and experiment with Pokedex Compose XR, you’ll need:
+
+1. The latest Canary build of Android Studio – for example, I’m currently using Android Studio
+   Narwhal
+   3 Feature Drop | 2025.1.3 Canary 4.
+
+2. XR System Images for the XR Emulator – these are required to simulate the Extended Reality
+   environment without physical hardware.
+
+3. Clone this repository, open it in Android Studio, and select an XR Emulator device profile when
+   launching the app.
+
+This setup ensures you can explore the project as intended, leveraging the early-access AndroidX XR
+library in a full virtual XR environment.
+
 ## Versioning
 
 Target SDK version: 36 <br />
