@@ -78,7 +78,11 @@ fun SharedTransitionScope.PokemonListScreen(
                 .movable()
                 .resizable()
         ) {
-            SpatialPanel(SubspaceModifier.height(824.dp).width(500.dp)) {
+            SpatialPanel(
+                SubspaceModifier
+                    .height(900.dp)
+                    .width(500.dp)
+            ) {
                 Scaffold(topBar = {
                     CustomToolbar(
                         title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
@@ -100,7 +104,9 @@ fun SharedTransitionScope.PokemonListScreen(
 
             if (pk.url != null && pk.imageUrl != null && pk.name != null) {
                 SpatialPanel(
-                    SubspaceModifier.height(1000.dp).width(700.dp)
+                    SubspaceModifier
+                        .height(1000.dp)
+                        .width(700.dp)
                 ) {
                     PokemonDetailsScreen(
                         url = pk.url ?: "",
