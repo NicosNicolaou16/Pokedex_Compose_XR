@@ -23,7 +23,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     contentColor = MaterialTheme.colorScheme.background,
                 ) { innerPadding ->
-                    PokemonListScreen({ enableEdgeToEdge() })
+                    PokemonListScreen(
+                        paddingValues = innerPadding,
+                        changeSystemBarStyle = { enableEdgeToEdge() })
                 }
             }
         }

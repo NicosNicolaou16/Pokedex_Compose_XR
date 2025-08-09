@@ -59,6 +59,7 @@ import com.nicos.pokedex_compose_xr.utils.extensions.getProgressDrawable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun PokemonListScreen(
+    paddingValues: PaddingValues,
     changeSystemBarStyle: (SystemBarStyle) -> Unit
 ) {
     var selectedPokemonModel by remember { mutableStateOf(SelectedPokemonModel()) }
