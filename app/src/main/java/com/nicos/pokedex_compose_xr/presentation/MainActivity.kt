@@ -8,15 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.xr.compose.spatial.Subspace
-import androidx.xr.compose.subspace.SpatialPanel
-import androidx.xr.compose.subspace.layout.SubspaceModifier
-import androidx.xr.compose.subspace.layout.height
-import androidx.xr.compose.subspace.layout.movable
-import androidx.xr.compose.subspace.layout.resizable
-import androidx.xr.compose.subspace.layout.width
-import com.nicos.pokedex_compose_xr.presentation.navigation.Navigation
+import com.nicos.pokedex_compose_xr.presentation.pokemon_list_screen.PokemonListScreen
 import com.nicos.pokedex_compose_xr.ui.theme.Pokedex_Compose_XRTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     contentColor = MaterialTheme.colorScheme.background,
                 ) { innerPadding ->
-                    Navigation({ enableEdgeToEdge() })
+                    PokemonListScreen({ enableEdgeToEdge() })
                 }
             }
         }

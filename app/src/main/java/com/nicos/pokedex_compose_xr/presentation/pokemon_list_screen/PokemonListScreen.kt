@@ -40,7 +40,6 @@ import androidx.navigation.NavController
 import androidx.xr.compose.spatial.Subspace
 import androidx.xr.compose.subspace.SpatialPanel
 import androidx.xr.compose.subspace.SpatialRow
-import androidx.xr.compose.subspace.layout.PlaneSemantic
 import androidx.xr.compose.subspace.layout.SubspaceModifier
 import androidx.xr.compose.subspace.layout.height
 import androidx.xr.compose.subspace.layout.movable
@@ -59,8 +58,7 @@ import com.nicos.pokedex_compose_xr.utils.extensions.getProgressDrawable
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SharedTransitionScope.PokemonListScreen(
-    navController: NavController,
+fun PokemonListScreen(
     changeSystemBarStyle: (SystemBarStyle) -> Unit
 ) {
     var selectedPokemonModel by remember { mutableStateOf(SelectedPokemonModel()) }

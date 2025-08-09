@@ -59,7 +59,7 @@ import com.nicos.pokedex_compose_xr.utils.extensions.upperCaseFirstLetter
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SharedTransitionScope.PokemonDetailsScreen(
+fun PokemonDetailsScreen(
     url: String,
     imageUrl: String,
     name: String,
@@ -95,7 +95,7 @@ fun SharedTransitionScope.PokemonDetailsScreen(
 }
 
 @Composable
-fun SharedTransitionScope.DetailsScreen(
+fun DetailsScreen(
     paddingValues: PaddingValues,
     pokemonDetailsViewModel: PokemonDetailsViewModel,
     color: MutableIntState,
