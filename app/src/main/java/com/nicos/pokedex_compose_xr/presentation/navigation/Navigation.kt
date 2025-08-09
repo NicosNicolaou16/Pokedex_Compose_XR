@@ -26,23 +26,9 @@ fun Navigation(changeSystemBarStyle: (SystemBarStyle) -> Unit) {
             composable<PokemonList> {
                 PokemonListScreen(
                     navController,
-                    animatedVisibilityScope = this@composable,
                     changeSystemBarStyle = changeSystemBarStyle,
                 )
             }
-            /*composable<PokemonDetails> {
-                val pokemonDetailsScreen: PokemonDetails = it.toRoute()
-                PokemonDetailsScreen(
-                    url = pokemonDetailsScreen.url.decodeStringUrl(),
-                    imageUrl = pokemonDetailsScreen.imageUrl.decodeStringUrl(),
-                    name = pokemonDetailsScreen.name,
-                    changeSystemBarStyle = changeSystemBarStyle,
-                    animatedVisibilityScope = this@composable,
-                    backButton = {
-                        navController.popBackStack()
-                    }
-                )
-            }*/
         }
     }
 }

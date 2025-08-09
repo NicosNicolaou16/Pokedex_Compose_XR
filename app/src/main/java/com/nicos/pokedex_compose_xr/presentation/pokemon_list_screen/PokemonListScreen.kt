@@ -61,7 +61,6 @@ import com.nicos.pokedex_compose_xr.utils.extensions.getProgressDrawable
 @Composable
 fun SharedTransitionScope.PokemonListScreen(
     navController: NavController,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     changeSystemBarStyle: (SystemBarStyle) -> Unit
 ) {
     var selectedPokemonModel by remember { mutableStateOf(SelectedPokemonModel()) }
@@ -85,7 +84,6 @@ fun SharedTransitionScope.PokemonListScreen(
                     )
                 }) { paddingValues ->
                     GridViewPokemonList(
-                        animatedVisibilityScope = animatedVisibilityScope,
                         paddingValues = paddingValues,
                         listener = {
                             selectedPokemonModel = SelectedPokemonModel(
@@ -112,7 +110,6 @@ fun SharedTransitionScope.PokemonListScreen(
                         imageUrl = selectedPokemonModel.imageUrl ?: "",
                         name = selectedPokemonModel.name ?: "",
                         changeSystemBarStyle = changeSystemBarStyle,
-                        animatedVisibilityScope = animatedVisibilityScope
                     )
                 }
             }
@@ -121,10 +118,9 @@ fun SharedTransitionScope.PokemonListScreen(
 }
 
 @Composable
-fun SharedTransitionScope.GridViewPokemonList(
+fun GridViewPokemonList(
     listener: (PokemonEntity) -> Unit,
     paddingValues: PaddingValues,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     pokemonListViewModel: PokemonListViewModel = hiltViewModel()
 ) {
     val state = pokemonListViewModel.pokemonListState.collectAsState().value
@@ -141,7 +137,6 @@ fun SharedTransitionScope.GridViewPokemonList(
         }) { pokemon ->
             LoadPokemonImage(
                 listener = listener,
-                animatedVisibilityScope = animatedVisibilityScope,
                 pokemonEntity = pokemon
             )
         }
@@ -157,9 +152,8 @@ fun SharedTransitionScope.GridViewPokemonList(
 }
 
 @Composable
-fun SharedTransitionScope.LoadPokemonImage(
+fun LoadPokemonImage(
     listener: (PokemonEntity) -> Unit,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     pokemonEntity: PokemonEntity
 ) {
     val context = LocalContext.current
@@ -189,12 +183,6 @@ fun SharedTransitionScope.LoadPokemonImage(
                 memoryCachePolicy(CachePolicy.ENABLED)
             }.build(),
             modifier = Modifier
-                .sharedElement(
-                    sharedContentState = rememberSharedContentState(
-                        key = pokemonEntity.imageUrl ?: ""
-                    ),
-                    animatedVisibilityScope = animatedVisibilityScope,
-                )
                 .fillMaxSize(),
             contentDescription = null,
             contentScale = ContentScale.None,
