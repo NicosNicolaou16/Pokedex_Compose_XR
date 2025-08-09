@@ -24,6 +24,7 @@ with the AndroidX XR library, offering real-world examples to accelerate experim
 learning.
 
 ## How to Test Pokedex Compose XR
+
 To run and experiment with Pokedex Compose XR, you’ll need:
 
 1. The latest Canary build of Android Studio – for example, I’m currently using Android Studio
