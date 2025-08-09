@@ -63,9 +63,9 @@ fun SharedTransitionScope.PokemonDetailsScreen(
     url: String,
     imageUrl: String,
     name: String,
-    animatedVisibilityScope: AnimatedVisibilityScope,
+    animatedVisibilityScope: AnimatedVisibilityScope? = null,
     changeSystemBarStyle: (SystemBarStyle) -> Unit,
-    backButton: () -> Unit,
+    backButton: () -> Unit = {},
     pokemonDetailsViewModel: PokemonDetailsViewModel = hiltViewModel()
 ) {
     val color = remember {
@@ -102,7 +102,7 @@ fun SharedTransitionScope.PokemonDetailsScreen(
 fun SharedTransitionScope.DetailsScreen(
     paddingValues: PaddingValues,
     pokemonDetailsViewModel: PokemonDetailsViewModel,
-    animatedVisibilityScope: AnimatedVisibilityScope,
+    animatedVisibilityScope: AnimatedVisibilityScope?,
     color: MutableIntState,
 ) {
     val pokemonDetailsDataModelList =
@@ -133,7 +133,7 @@ fun SharedTransitionScope.DetailsScreen(
 @Composable
 fun SharedTransitionScope.ImageAndName(
     pokemonDetailsDataModel: PokemonDetailsDataModel,
-    animatedVisibilityScope: AnimatedVisibilityScope,
+    animatedVisibilityScope: AnimatedVisibilityScope?,
     color: MutableIntState,
 ) {
     val context = LocalContext.current
@@ -169,12 +169,12 @@ fun SharedTransitionScope.ImageAndName(
                 },
                 modifier = Modifier
                     .fillMaxSize()
-                    .sharedElement(
+                    /*.sharedElement(
                         sharedContentState = rememberSharedContentState(
                             key = pokemonDetailsDataModel.imageUrl ?: ""
                         ),
                         animatedVisibilityScope = animatedVisibilityScope,
-                    )
+                    )*/
             )
             Spacer(modifier = Modifier.padding(top = 15.dp))
             Text(

@@ -27,21 +27,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Pokedex_Compose_XRTheme {
-                Subspace {
-                    SpatialPanel(
-                        SubspaceModifier
-                            .height(824.dp)
-                            .width(700.dp)
-                            .movable()
-                            .resizable()
-                    ) {
-                        Scaffold(
-                            modifier = Modifier.fillMaxSize(),
-                            contentColor = MaterialTheme.colorScheme.background,
-                        ) { innerPadding ->
-                            Navigation({ enableEdgeToEdge() })
-                        }
-                    }
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    contentColor = MaterialTheme.colorScheme.background,
+                ) { innerPadding ->
+                    Navigation({ enableEdgeToEdge() })
                 }
             }
         }
