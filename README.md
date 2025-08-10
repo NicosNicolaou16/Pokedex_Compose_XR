@@ -23,6 +23,12 @@ Pokedex Compose XR is both a showcase and a playground for developers interested
 with the AndroidX XR library, offering real-world examples to accelerate experimentation and
 learning.
 
+<p align="left">
+  <a title="simulator_image"><img src="examples/Screenshot_20250810_024943.png" height="500" width="200"></a>
+  <a title="simulator_image"><img src="examples/Screenshot_20250810_024956.png" height="500" width="200"></a>
+  <a title="simulator_image"><img src="examples/example_gif1.gif" height="500" width="200"></a>
+</p>
+
 ## How to Test Pokedex Compose XR
 
 To run and experiment with Pokedex Compose XR, you’ll need:
