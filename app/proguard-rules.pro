@@ -33,8 +33,8 @@
 #-keep class com.google.gson.stream.** { *; }
 
 # Application classes that will be serialized/deserialized over Gson
--keep class com.nicos.pokedex_compose.data.models.pokemon_response_model.PokemonResponse.** { <fields>; }
--keep class com.nicos.pokedex_compose.data.room_database.entities.PokemonInfoEntity.** { <fields>; }
+-keep class com.nicos.pokedex_compose_xr.data.models.pokemon_response_model.PokemonResponse.** { <fields>; }
+-keep class com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonInfoEntity.** { <fields>; }
 
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
 # JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
@@ -120,3 +120,24 @@
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
 -dontwarn org.conscrypt.ConscryptHostnameVerifier
 # End OkHttp proguard rules
+
+# XR
+-dontwarn com.android.extensions.xr.XrExtensionResult
+-dontwarn com.android.extensions.xr.XrExtensions
+-dontwarn com.android.extensions.xr.function.Consumer
+-dontwarn com.android.extensions.xr.node.InputEvent$HitInfo
+-dontwarn com.android.extensions.xr.node.InputEvent
+-dontwarn com.android.extensions.xr.node.Mat4f
+-dontwarn com.android.extensions.xr.node.Node
+-dontwarn com.android.extensions.xr.node.NodeTransaction
+-dontwarn com.android.extensions.xr.node.NodeTransform
+-dontwarn com.android.extensions.xr.node.Vec3
+-dontwarn com.android.extensions.xr.splitengine.BufferHandle
+-dontwarn com.android.extensions.xr.splitengine.MessageGroupCallback
+-dontwarn com.android.extensions.xr.splitengine.RequestCallback
+-dontwarn com.android.extensions.xr.splitengine.SystemRendererConnection
+-dontwarn com.android.extensions.xr.subspace.Subspace
+
+# Suggetsted by Gemini
+-keep class com.android.extensions.xr.** { *; }
+-keep interface com.android.extensions.xr.** { *; }
