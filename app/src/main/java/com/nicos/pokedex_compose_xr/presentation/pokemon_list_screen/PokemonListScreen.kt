@@ -3,13 +3,17 @@
 package com.nicos.pokedex_compose_xr.presentation.pokemon_list_screen
 
 import android.annotation.SuppressLint
+import androidx.activity.SystemBarStyle
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -21,6 +25,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -29,50 +37,89 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.xr.compose.spatial.Subspace
+import androidx.xr.compose.subspace.SpatialPanel
+import androidx.xr.compose.subspace.SpatialRow
+import androidx.xr.compose.subspace.layout.SubspaceModifier
+import androidx.xr.compose.subspace.layout.height
+import androidx.xr.compose.subspace.layout.movable
+import androidx.xr.compose.subspace.layout.resizable
+import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
+import com.nicos.pokedex_compose_xr.data.models.pokemon_details_data_model.SelectedPokemonModel
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonEntity
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.CustomToolbar
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.ShowDialog
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.StartDefaultLoader
-import com.nicos.pokedex_compose_xr.utils.extensions.encodeStringUrl
+import com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.PokemonDetailsScreen
 import com.nicos.pokedex_compose_xr.utils.extensions.getProgressDrawable
-import com.nicos.pokedex_compose_xr.utils.screen_routes.PokemonDetails
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SharedTransitionScope.PokemonListScreen(
-    navController: NavController,
-    animatedVisibilityScope: AnimatedVisibilityScope,
+fun PokemonListScreen(
+    paddingValues: PaddingValues,
+    changeSystemBarStyle: (SystemBarStyle) -> Unit
 ) {
-            Scaffold(topBar = {
-                CustomToolbar(
-                    title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
-                )
-            }) { paddingValues ->
-                GridViewPokemonList(
-                    animatedVisibilityScope = animatedVisibilityScope,
-                    paddingValues = paddingValues,
-                    listener = {
-                        navController.navigate(
-                            PokemonDetails(
-                                url = it.url?.encodeStringUrl() ?: "",
-                                imageUrl = it.imageUrl?.encodeStringUrl() ?: "",
-                                name = it.name,
-                            )
-                        )
-                    },
-                )
+    var selectedPokemonModel by remember { mutableStateOf(SelectedPokemonModel()) }
 
+    Subspace {
+        SpatialRow(
+            SubspaceModifier
+                .height(1000.dp)
+                .width(1500.dp)
+                .movable()
+                .resizable()
+        ) {
+            SpatialPanel(
+                SubspaceModifier
+                    .height(900.dp)
+                    .width(500.dp)
+            ) {
+                Scaffold(topBar = {
+                    CustomToolbar(
+                        title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_list),
+                    )
+                }) { paddingValues ->
+                    GridViewPokemonList(
+                        paddingValues = paddingValues,
+                        listener = {
+                            selectedPokemonModel = SelectedPokemonModel(
+                                url = it.url,
+                                imageUrl = it.imageUrl,
+                                name = it.name
+                            )
+                        },
+                    )
+                }
+            }
+
+            if (selectedPokemonModel.url != null &&
+                selectedPokemonModel.imageUrl != null &&
+                selectedPokemonModel.name != null
+            ) {
+                SpatialPanel(
+                    SubspaceModifier
+                        .height(1000.dp)
+                        .width(700.dp)
+                ) {
+                    PokemonDetailsScreen(
+                        url = selectedPokemonModel.url ?: "",
+                        imageUrl = selectedPokemonModel.imageUrl ?: "",
+                        name = selectedPokemonModel.name ?: "",
+                        changeSystemBarStyle = changeSystemBarStyle,
+                    )
+                }
+            }
+        }
     }
 }
 
 @Composable
-fun SharedTransitionScope.GridViewPokemonList(
+fun GridViewPokemonList(
     listener: (PokemonEntity) -> Unit,
     paddingValues: PaddingValues,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     pokemonListViewModel: PokemonListViewModel = hiltViewModel()
 ) {
     val state = pokemonListViewModel.pokemonListState.collectAsState().value
@@ -89,7 +136,6 @@ fun SharedTransitionScope.GridViewPokemonList(
         }) { pokemon ->
             LoadPokemonImage(
                 listener = listener,
-                animatedVisibilityScope = animatedVisibilityScope,
                 pokemonEntity = pokemon
             )
         }
@@ -105,9 +151,8 @@ fun SharedTransitionScope.GridViewPokemonList(
 }
 
 @Composable
-fun SharedTransitionScope.LoadPokemonImage(
+fun LoadPokemonImage(
     listener: (PokemonEntity) -> Unit,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     pokemonEntity: PokemonEntity
 ) {
     val context = LocalContext.current
@@ -137,12 +182,6 @@ fun SharedTransitionScope.LoadPokemonImage(
                 memoryCachePolicy(CachePolicy.ENABLED)
             }.build(),
             modifier = Modifier
-                .sharedElement(
-                    sharedContentState = rememberSharedContentState(
-                        key = pokemonEntity.imageUrl ?: ""
-                    ),
-                    animatedVisibilityScope = animatedVisibilityScope,
-                )
                 .fillMaxSize(),
             contentDescription = null,
             contentScale = ContentScale.None,

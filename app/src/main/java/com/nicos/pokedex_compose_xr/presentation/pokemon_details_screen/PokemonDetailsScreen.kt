@@ -59,13 +59,11 @@ import com.nicos.pokedex_compose_xr.utils.extensions.upperCaseFirstLetter
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SharedTransitionScope.PokemonDetailsScreen(
+fun PokemonDetailsScreen(
     url: String,
     imageUrl: String,
     name: String,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     changeSystemBarStyle: (SystemBarStyle) -> Unit,
-    backButton: () -> Unit,
     pokemonDetailsViewModel: PokemonDetailsViewModel = hiltViewModel()
 ) {
     val color = remember {
@@ -82,13 +80,11 @@ fun SharedTransitionScope.PokemonDetailsScreen(
                     CustomToolbar(
                         title = stringResource(com.nicos.pokedex_compose_xr.R.string.pokemon_details),
                         color = Color(color = color.intValue),
-                        backButton = backButton
                     )
                 }) { paddingValues ->
                 DetailsScreen(
                     paddingValues = paddingValues,
                     pokemonDetailsViewModel = pokemonDetailsViewModel,
-                    animatedVisibilityScope = animatedVisibilityScope,
                     color = color
                 )
             }
@@ -99,10 +95,9 @@ fun SharedTransitionScope.PokemonDetailsScreen(
 }
 
 @Composable
-fun SharedTransitionScope.DetailsScreen(
+fun DetailsScreen(
     paddingValues: PaddingValues,
     pokemonDetailsViewModel: PokemonDetailsViewModel,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     color: MutableIntState,
 ) {
     val pokemonDetailsDataModelList =
@@ -116,7 +111,6 @@ fun SharedTransitionScope.DetailsScreen(
                     PokemonDetailsViewTypes.IMAGE_AND_NAME_VIEW_TYPE -> {
                         ImageAndName(
                             pokemonDetailsDataModel = pokemonDetailsDataModel,
-                            animatedVisibilityScope = animatedVisibilityScope,
                             color = color,
                         )
                     }
@@ -131,9 +125,8 @@ fun SharedTransitionScope.DetailsScreen(
 }
 
 @Composable
-fun SharedTransitionScope.ImageAndName(
+fun ImageAndName(
     pokemonDetailsDataModel: PokemonDetailsDataModel,
-    animatedVisibilityScope: AnimatedVisibilityScope,
     color: MutableIntState,
 ) {
     val context = LocalContext.current
@@ -169,12 +162,6 @@ fun SharedTransitionScope.ImageAndName(
                 },
                 modifier = Modifier
                     .fillMaxSize()
-                    .sharedElement(
-                        sharedContentState = rememberSharedContentState(
-                            key = pokemonDetailsDataModel.imageUrl ?: ""
-                        ),
-                        animatedVisibilityScope = animatedVisibilityScope,
-                    )
             )
             Spacer(modifier = Modifier.padding(top = 15.dp))
             Text(
