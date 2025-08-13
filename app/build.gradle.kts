@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.compose)
+    compileOnly(libs.androidx.extensions.xr)
     // Compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
