@@ -35,8 +35,8 @@ android {
             )
         }
         debug {
-            isMinifyEnabled = false
-            isShrinkResources = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.compose)
+    compileOnly(libs.androidx.extensions.xr)
     // Compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
