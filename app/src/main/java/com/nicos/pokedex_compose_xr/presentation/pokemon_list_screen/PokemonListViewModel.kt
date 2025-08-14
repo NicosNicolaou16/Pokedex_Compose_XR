@@ -24,15 +24,15 @@ class PokemonListViewModel @Inject constructor(
         offline()
     }
 
-    fun requestToFetchPokemon(url: String? = null) = viewModelScope.launch(Dispatchers.IO) {
-        pokemonListRepositoryImpl.fetchPokemonList(url = url).let { resource ->
+    fun requestToFetchPokemon(url: String? = null) = viewModelScope.launch(Dispatchers.Main) {
+        pokemonListRepositoryImpl.fetchPokemonList(url = url).collect { resource ->
             when (resource) {
                 is Resource.Success -> {
                     _pokemonListState.value =
                         _pokemonListState.value.copy(
                             isLoading = false,
                             pokemonMutableList = resource.data,
-                                    nextPage = resource.nextUrl
+                            nextPage = resource.nextUrl
                         )
                 }
 
@@ -47,8 +47,8 @@ class PokemonListViewModel @Inject constructor(
         }
     }
 
-    private fun offline() = viewModelScope.launch(Dispatchers.IO) {
-        pokemonListRepositoryImpl.offline().let { resource ->
+    private fun offline() = viewModelScope.launch(Dispatchers.Main) {
+        pokemonListRepositoryImpl.offline().collect { resource ->
             when (resource) {
                 is Resource.Success -> {
                     _pokemonListState.value =
