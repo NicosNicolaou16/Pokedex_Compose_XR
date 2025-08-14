@@ -45,8 +45,6 @@ data class StatsEntity(
                 statsEntityList?.forEach { statsEntity ->
                     statsEntity.pokemonName = pokemonName
                     statsEntity.statName = statsEntity.stat?.name
-                    Log.d("SaveStats", "Nested stat name (stat.stat?.name): ${statsEntity.stat?.name}")
-                    Log.d("SaveStats", "Nested stat object (statsEntity.statName): ${statsEntity.statName}")
                     if (statsEntity.statName != null) {
                         myRoomDatabase.statsDao().insertOrReplaceObject(statsEntity)
                     }
