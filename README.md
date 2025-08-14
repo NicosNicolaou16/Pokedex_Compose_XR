@@ -99,6 +99,10 @@ built by @NicosNicolaou16. <br />
 
 ## Versioning
 
+XR Compose version: 1.0.0-alpha06 <br />
+XR Runtime version: 1.0.0-alpha05 <br />
+Material3 XR Compose version: 1.0.0-alpha10 <br />
+XR Extensions version: 1.0.0 <br />
 Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
 Kotlin version: 2.2.0 <br />
