@@ -20,10 +20,11 @@ class PokemonDetailsRepositoryImpl @Inject constructor(
         name: String
     ): Resource<PokemonDetailsEntity> {
         return try {
-            val pokemonDetailsEntity = pokemonService.getPokemonDetails(url = url)
-            savePokemonDetails(pokemonDetailsEntity = pokemonDetailsEntity)
-
-            Resource.Success(data = myRoomDatabase.pokemonDetailDao().getPokemonInfoByName(name))
+            val pokemonDetails = pokemonService.getPokemonDetails(url = url)
+            savePokemonDetails(pokemonDetailsEntity = pokemonDetails)
+            val pokemonDetailsEntity: PokemonDetailsEntity? =
+                PokemonDetailsEntity.getPokemonDetails(name, myRoomDatabase)
+            Resource.Success(data = pokemonDetailsEntity)
         } catch (e: Exception) {
             Resource.Error(message = handlingError.handleErrorMessage(e))
         }

@@ -1,5 +1,6 @@
 package com.nicos.pokedex_compose_xr.data.room_database.entities
 
+import android.util.Log
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Ignore
@@ -10,7 +11,7 @@ import com.nicos.pokedex_compose_xr.data.room_database.init_database.MyRoomDatab
 import kotlinx.coroutines.flow.flow
 
 @Entity(
-    indices = [Index(value = ["id"], unique = true), Index(value = ["pokemonName"])],
+    indices = [Index(value = ["id"], unique = true)/*, Index(value = ["pokemonName"])*/],
     foreignKeys = [ForeignKey(
         entity = PokemonDetailsEntity::class,
         parentColumns = arrayOf("name"),
@@ -35,12 +36,19 @@ data class StatsEntity(
     )
 
     companion object {
-        fun saveStats(statsEntityList: MutableList<StatsEntity>?, myRoomDatabase: MyRoomDatabase) =
+        fun saveStats(
+            statsEntityList: MutableList<StatsEntity>?,
+            pokemonName: String?,
+            myRoomDatabase: MyRoomDatabase
+        ) =
             flow {
-                statsEntityList?.forEach { stat ->
-                    stat.statName = stat.stat?.name
-                    if (stat.statName != null) {
-                        myRoomDatabase.statsDao().insertOrReplaceObject(stat)
+                statsEntityList?.forEach { statsEntity ->
+                    statsEntity.pokemonName = pokemonName
+                    statsEntity.statName = statsEntity.stat?.name
+                    Log.d("SaveStats", "Nested stat name (stat.stat?.name): ${statsEntity.stat?.name}")
+                    Log.d("SaveStats", "Nested stat object (statsEntity.statName): ${statsEntity.statName}")
+                    if (statsEntity.statName != null) {
+                        myRoomDatabase.statsDao().insertOrReplaceObject(statsEntity)
                     }
                 }
                 emit(statsEntityList)
