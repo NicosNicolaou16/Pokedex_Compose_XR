@@ -1,6 +1,5 @@
 package com.nicos.pokedex_compose_xr.data.room_database.entities
 
-import android.util.Log
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Ignore
@@ -11,7 +10,7 @@ import com.nicos.pokedex_compose_xr.data.room_database.init_database.MyRoomDatab
 import kotlinx.coroutines.flow.flow
 
 @Entity(
-    indices = [Index(value = ["id"], unique = true)/*, Index(value = ["pokemonName"])*/],
+    indices = [Index(value = ["id"], unique = true), Index(value = ["pokemonName"])],
     foreignKeys = [ForeignKey(
         entity = PokemonDetailsEntity::class,
         parentColumns = arrayOf("name"),
