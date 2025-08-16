@@ -4,9 +4,7 @@ package com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen
 
 import android.annotation.SuppressLint
 import androidx.activity.SystemBarStyle
-import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,21 +36,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.xr.compose.spatial.Subspace
-import androidx.xr.compose.subspace.SpatialPanel
-import androidx.xr.compose.subspace.layout.SubspaceModifier
-import androidx.xr.compose.subspace.layout.height
-import androidx.xr.compose.subspace.layout.movable
-import androidx.xr.compose.subspace.layout.resizable
-import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.nicos.percentageswithanimationcompose.LinearPercentage
 import com.nicos.percentageswithanimationcompose.enums.LeftAndRightText
-import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.CustomToolbar
 import com.nicos.pokedex_compose_xr.data.models.pokemon_details_data_model.PokemonDetailsDataModel
 import com.nicos.pokedex_compose_xr.data.models.pokemon_details_data_model.PokemonDetailsViewTypes
+import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.CustomToolbar
 import com.nicos.pokedex_compose_xr.utils.extensions.colorToInt
 import com.nicos.pokedex_compose_xr.utils.extensions.getProgressDrawable
 import com.nicos.pokedex_compose_xr.utils.extensions.upperCaseFirstLetter
