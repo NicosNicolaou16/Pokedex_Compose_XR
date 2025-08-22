@@ -95,7 +95,7 @@ Android that optimizes and reduces the size of APKs by removing unused code and 
 also obfuscating the remaining code to improve security. <br />
 The percentage for showing the skills of each Pokémon is calculated using
 the [PercentageWithAnimation](https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose)
-built by @NicosNicolaou16. <br />
+built by [@NicosNicolaou16](https://github.com/NicosNicolaou16). <br />
 
 ## Versioning
 
@@ -105,8 +105,8 @@ Material3 XR Compose version: 1.0.0-alpha10 <br />
 XR Extensions version: 1.0.0 <br />
 Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
-Kotlin version: 2.2.0 <br />
-Gradle version: 8.12.0 <br />
+Kotlin version: 2.2.10 <br />
+Gradle version: 8.12.1 <br />
 
 ## References/Tutorials Follow
 

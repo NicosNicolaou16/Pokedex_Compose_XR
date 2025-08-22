@@ -1,8 +1,10 @@
 package com.nicos.pokedex_compose_xr.data.repository_impl
 
-import android.util.Log
+import com.nicos.pokedex_compose_xr.data.mappers.toPokemonDetailsUi
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsEntity
+import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsWithStatsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.init_database.MyRoomDatabase
+import com.nicos.pokedex_compose_xr.domain.models.models.PokemonDetailsUI
 import com.nicos.pokedex_compose_xr.domain.network.PokemonService
 import com.nicos.pokedex_compose_xr.domain.repositories.PokemonDetailsRepository
 import com.nicos.pokedex_compose_xr.utils.generic_classes.HandlingError
@@ -23,14 +25,14 @@ class PokemonDetailsRepositoryImpl @Inject constructor(
     override suspend fun fetchPokemonDetails(
         url: String,
         name: String
-    ): Flow<Resource<PokemonDetailsEntity>> {
+    ): Flow<Resource<PokemonDetailsUI>> {
         return flow {
             try {
                 val pokemonDetails = pokemonService.getPokemonDetails(url = url)
                 savePokemonDetails(pokemonDetailsEntity = pokemonDetails)
-                val pokemonDetailsEntity: PokemonDetailsEntity? =
+                val pokemonDetailsEntity: PokemonDetailsWithStatsEntity? =
                     PokemonDetailsEntity.getPokemonDetails(name, myRoomDatabase)
-                emit(Resource.Success(data = pokemonDetailsEntity))
+                emit(Resource.Success(data = pokemonDetailsEntity?.toPokemonDetailsUi()))
             } catch (e: Exception) {
                 emit(Resource.Error(message = handlingError.handleErrorMessage(e)))
             }
@@ -43,16 +45,12 @@ class PokemonDetailsRepositoryImpl @Inject constructor(
             myRoomDatabase = myRoomDatabase
         ).collect()
 
-    override suspend fun offline(name: String): Flow<Resource<PokemonDetailsEntity>> {
+    override suspend fun offline(name: String): Flow<Resource<PokemonDetailsUI>> {
         return flow {
             try {
-                val pokemonDetailsEntity: PokemonDetailsEntity? =
+                val pokemonDetailsEntity: PokemonDetailsWithStatsEntity? =
                     PokemonDetailsEntity.getPokemonDetails(name, myRoomDatabase)
-                emit(
-                    Resource.Success(
-                        data = pokemonDetailsEntity
-                    )
-                )
+                emit(Resource.Success(data = pokemonDetailsEntity?.toPokemonDetailsUi()))
             } catch (e: Exception) {
                 emit(Resource.Error(message = handlingError.handleErrorMessage(e)))
             }

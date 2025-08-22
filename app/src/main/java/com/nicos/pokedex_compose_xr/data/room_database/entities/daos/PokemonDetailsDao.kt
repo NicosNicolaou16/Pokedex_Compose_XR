@@ -22,4 +22,8 @@ interface PokemonDetailsDao : BaseDao<PokemonDetailsEntity, MutableList<PokemonD
     @Query("DELETE FROM pokemondetailsentity WHERE name=:name")
     suspend fun deletePokemonInfoByName(name: String)
 
+    @Transaction
+    @Query("SELECT * FROM pokemondetailsentity WHERE name=:name")
+    suspend fun getPokemonDetailsWithStatsAndStatsByName(name: String): PokemonDetailsWithStatsEntity?
+
 }
