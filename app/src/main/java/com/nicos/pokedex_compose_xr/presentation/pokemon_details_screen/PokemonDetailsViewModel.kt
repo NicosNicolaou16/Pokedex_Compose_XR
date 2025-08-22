@@ -1,9 +1,8 @@
 package com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nicos.pokedex_compose_xr.data.models.pokemon_details_data_model.PokemonDetailsDataModel
+import com.nicos.pokedex_compose_xr.domain.models.pokemon_details_data_model.PokemonDetailsDataModel
 import com.nicos.pokedex_compose_xr.data.repository_impl.PokemonDetailsRepositoryImpl
 import com.nicos.pokedex_compose_xr.utils.generic_classes.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

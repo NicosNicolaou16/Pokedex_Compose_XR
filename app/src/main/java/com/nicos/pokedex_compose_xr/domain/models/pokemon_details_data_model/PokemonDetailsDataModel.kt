@@ -1,4 +1,4 @@
-package com.nicos.pokedex_compose_xr.data.models.pokemon_details_data_model
+package com.nicos.pokedex_compose_xr.domain.models.pokemon_details_data_model
 
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.entities.StatsEntity
