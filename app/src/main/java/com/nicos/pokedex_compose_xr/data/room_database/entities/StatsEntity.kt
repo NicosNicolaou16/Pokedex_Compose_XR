@@ -2,12 +2,10 @@ package com.nicos.pokedex_compose_xr.data.room_database.entities
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.Ignore
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
-import com.nicos.pokedex_compose_xr.data.room_database.init_database.MyRoomDatabase
-import kotlinx.coroutines.flow.flow
+import com.nicos.pokedex_compose_xr.domain.dto.StatDto
+import com.nicos.pokedex_compose_xr.domain.dto.StatsDto
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["pokemonName"])],
@@ -20,35 +18,18 @@ import kotlinx.coroutines.flow.flow
 )
 data class StatsEntity(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
-    @SerializedName("base_stat") var baseStat: Int?,
-    @Ignore val stat: StatEntity?,
+    var baseStat: Int?,
     var statName: String?,
     var pokemonName: String?,
-) {
+)
 
-    constructor() : this(
-        0,
-        null,
-        null,
-        null,
-        null
+fun StatsDto.toStatsEntity(
+    pokemonName: String, // Foreign key
+    statDto: StatDto?,
+): StatsEntity {
+    return StatsEntity(
+        baseStat = baseStat,
+        statName = statDto?.name ?: "",
+        pokemonName = pokemonName
     )
-
-    companion object {
-        fun saveStats(
-            statsEntityList: MutableList<StatsEntity>?,
-            pokemonName: String?,
-            myRoomDatabase: MyRoomDatabase
-        ) =
-            flow {
-                statsEntityList?.forEach { statsEntity ->
-                    statsEntity.pokemonName = pokemonName
-                    statsEntity.statName = statsEntity.stat?.name
-                    if (statsEntity.statName != null) {
-                        myRoomDatabase.statsDao().insertOrReplaceObject(statsEntity)
-                    }
-                }
-                emit(statsEntityList)
-            }
-    }
 }

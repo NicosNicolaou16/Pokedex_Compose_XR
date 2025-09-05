@@ -106,7 +106,7 @@ XR Extensions version: 1.0.0 <br />
 Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
 Kotlin version: 2.2.10 <br />
-Gradle version: 8.12.1 <br />
+Gradle version: 8.13.0 <br />
 
 ## References/Tutorials Follow
 
