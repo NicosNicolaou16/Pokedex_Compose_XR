@@ -1,4 +1,4 @@
-package com.nicos.pokedex_compose_xr.data.room_database.entities.daos
+package com.nicos.pokedex_compose_xr.data.room_database.entities.dao
 
 import androidx.room.Dao
 import androidx.room.Query

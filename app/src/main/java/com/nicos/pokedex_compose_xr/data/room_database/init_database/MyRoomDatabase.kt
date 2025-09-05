@@ -8,9 +8,9 @@ import androidx.room.TypeConverters
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonEntity
 import com.nicos.pokedex_compose_xr.data.room_database.entities.StatsEntity
-import com.nicos.pokedex_compose_xr.data.room_database.entities.daos.PokemonDao
-import com.nicos.pokedex_compose_xr.data.room_database.entities.daos.PokemonDetailsDao
-import com.nicos.pokedex_compose_xr.data.room_database.entities.daos.StatsDao
+import com.nicos.pokedex_compose_xr.data.room_database.entities.dao.PokemonDao
+import com.nicos.pokedex_compose_xr.data.room_database.entities.dao.PokemonDetailsDao
+import com.nicos.pokedex_compose_xr.data.room_database.entities.dao.StatsDao
 import com.nicos.pokedex_compose_xr.data.room_database.type_converters.ConverterStats
 
 @Database(
