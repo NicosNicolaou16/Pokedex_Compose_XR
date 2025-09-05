@@ -29,11 +29,11 @@ data class StatsEntity(
 
 fun StatsDto.toStatsEntity(
     pokemonName: String, // Foreign key
-    statDto: StatDto,
+    statDto: StatDto?,
 ): StatsEntity {
     return StatsEntity(
         baseStat = baseStat,
-        statName = statDto.name,
+        statName = statDto?.name ?: "",
         pokemonName = pokemonName
     )
 }
