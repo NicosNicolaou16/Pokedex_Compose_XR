@@ -4,7 +4,7 @@ import com.nicos.pokedex_compose_xr.data.mappers.toPokemonDetailsUi
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsWithStatsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.init_database.MyRoomDatabase
-import com.nicos.pokedex_compose_xr.domain.models.models.PokemonDetailsUI
+import com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.models.PokemonDetailsUI
 import com.nicos.pokedex_compose_xr.domain.network.PokemonService
 import com.nicos.pokedex_compose_xr.domain.repositories.PokemonDetailsRepository
 import com.nicos.pokedex_compose_xr.utils.generic_classes.HandlingError

@@ -1,4 +1,4 @@
-package com.nicos.pokedex_compose_xr.domain.models.models
+package com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.models
 
 import com.nicos.pokedex_compose_xr.data.room_database.entities.StatsEntity
 
