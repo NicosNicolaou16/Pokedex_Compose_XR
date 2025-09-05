@@ -16,7 +16,6 @@ fun PokemonDetailsUI.toPokemonDetailsEntity(): PokemonDetailsWithStatsEntity {
     return PokemonDetailsWithStatsEntity(
         pokemonDetailsEntity = PokemonDetailsEntity(
             name = this.name,
-            statsEntity = this.stats,
             weight = this.weight
         ),
         statsEntityList = this.stats

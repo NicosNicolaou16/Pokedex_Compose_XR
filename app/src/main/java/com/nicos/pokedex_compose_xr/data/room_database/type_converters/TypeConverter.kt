@@ -3,7 +3,7 @@ package com.nicos.pokedex_compose_xr.data.room_database.type_converters
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.nicos.pokedex_compose_xr.data.room_database.entities.StatEntity
+import com.nicos.pokedex_compose_xr.domain.dto.StatDto
 import com.nicos.pokedex_compose_xr.data.room_database.entities.StatsEntity
 
 class ConverterStats {
@@ -21,10 +21,10 @@ class ConverterStats {
 class ConverterStat {
 
     @TypeConverter
-    fun fromStringToStat(value: String): StatEntity? {
-        return Gson().fromJson(value, object : TypeToken<StatEntity>() {}.type)
+    fun fromStringToStat(value: String): StatDto? {
+        return Gson().fromJson(value, object : TypeToken<StatDto>() {}.type)
     }
 
     @TypeConverter
-    fun fromStatToString(statEntity: StatEntity): String = Gson().toJson(statEntity)
+    fun fromStatToString(statDto: StatDto): String = Gson().toJson(statDto)
 }
