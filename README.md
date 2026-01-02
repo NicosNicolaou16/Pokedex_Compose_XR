@@ -105,7 +105,7 @@ built by [@NicosNicolaou16](https://github.com/NicosNicolaou16). <br />
 XR Compose version: 1.0.0-alpha09 <br />
 XR Runtime version: 1.0.0-alpha09 <br />
 Material3 XR Compose version: 1.0.0-alpha13 <br />
-XR Extensions version: 1.0.0 <br />
+XR Extensions version: 1.1.0 <br />
 Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
 Kotlin version: 2.3.0 <br />
