@@ -30,14 +30,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.xr.compose.spatial.Subspace
+import androidx.xr.compose.subspace.MovePolicy
+import androidx.xr.compose.subspace.ResizePolicy
 import androidx.xr.compose.subspace.SpatialPanel
 import androidx.xr.compose.subspace.SpatialRow
 import androidx.xr.compose.subspace.layout.SubspaceModifier
 import androidx.xr.compose.subspace.layout.height
-import androidx.xr.compose.subspace.layout.movable
-import androidx.xr.compose.subspace.layout.resizable
 import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
@@ -63,13 +63,13 @@ fun PokemonListScreen(
             SubspaceModifier
                 .height(1000.dp)
                 .width(1500.dp)
-                .movable()
-                .resizable()
         ) {
             SpatialPanel(
                 SubspaceModifier
                     .height(900.dp)
-                    .width(500.dp)
+                    .width(500.dp),
+                dragPolicy = MovePolicy(),
+                resizePolicy = ResizePolicy(),
             ) {
                 Scaffold(topBar = {
                     CustomToolbar(

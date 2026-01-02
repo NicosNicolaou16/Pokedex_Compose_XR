@@ -59,6 +59,9 @@ library in a full virtual XR environment.
 
 # The Project Contain the following technologies
 
+Create spatial and immersive Android experiences
+using [Jetpack XR](https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui) and modern
+Compose-based UI. <br />
 The programming language is the [Kotlin](https://kotlinlang.org/docs/getting-started.html), it is a
 modern, JVM-based programming language that is concise, safe, and interoperable with Java. <br />
 [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) is used for asynchronous
@@ -99,14 +102,14 @@ built by [@NicosNicolaou16](https://github.com/NicosNicolaou16). <br />
 
 ## Versioning
 
-XR Compose version: 1.0.0-alpha06 <br />
-XR Runtime version: 1.0.0-alpha05 <br />
-Material3 XR Compose version: 1.0.0-alpha10 <br />
-XR Extensions version: 1.0.0 <br />
+XR Compose version: 1.0.0-alpha09 <br />
+XR Runtime version: 1.0.0-alpha09 <br />
+Material3 XR Compose version: 1.0.0-alpha13 <br />
+XR Extensions version: 1.1.0 <br />
 Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
-Kotlin version: 2.2.10 <br />
-Gradle version: 8.13.0 <br />
+Kotlin version: 2.3.0 <br />
+Gradle version: 8.13.2 <br />
 
 ## References/Tutorials Follow
 
