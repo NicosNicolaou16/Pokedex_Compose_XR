@@ -1,6 +1,6 @@
 [versions]
 agp = "9.0.0"
-compose = "1.0.0-alpha10"
+composeXr = "1.0.0-alpha10"
 kotlin = "2.3.10"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -43,7 +43,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-swipe-refresh-layout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swipeRefreshLayoutVersion" }
 # XR
-androidx-compose = { module = "androidx.xr.compose:compose", version.ref = "compose" }
+androidx-compose = { module = "androidx.xr.compose:compose", version.ref = "composeXr" }
 androidx-runtime = { module = "androidx.xr.runtime:runtime", version.ref = "runtime" }
 material3 = { module = "androidx.xr.compose.material3:material3", version.ref = "material3" }
 androidx-extensions-xr = { module = "com.android.extensions.xr:extensions-xr", version.ref = "extensionsXr" }
