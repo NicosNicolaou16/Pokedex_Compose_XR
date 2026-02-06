@@ -81,11 +81,6 @@ This project is built using modern, recommended technologies for creating spatia
 *   [Develop UI with Jetpack Compose for XR](https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui)
 *   [Introducing the Android XR SDK Developer Preview](https://android-developers.googleblog.com/2024/12/introducing-android-xr-sdk-developer-preview.html)
 
-
-
-
-
-
 <!--# Pokedex Compose XR
 
 [![Linktree](https://img.shields.io/badge/linktree-1de9b6?style=for-the-badge&logo=linktree&logoColor=white)](https://linktr.ee/nicos_nicolaou)
