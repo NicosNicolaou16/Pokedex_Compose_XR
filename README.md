@@ -67,8 +67,8 @@ This project is built using modern, recommended technologies for creating spatia
 
 ## 🔧 Versioning
 
-*   **XR Compose version**: `1.0.0-alpha09`
-*   **XR Runtime version**: `1.0.0-alpha09`
+*   **XR Compose version**: `1.0.0-alpha10`
+*   **XR Runtime version**: `1.0.0-alpha10`
 *   **Material3 XR Compose version**: `1.0.0-alpha13`
 *   **XR Extensions version**: `1.1.0`
 *   **Target SDK**: `36`
