@@ -1,4 +1,4 @@
-package com.nicos.pokedex_compose_xr.domain.network
+package com.nicos.pokedex_compose_xr.data.network
 
 import com.nicos.pokedex_compose_xr.domain.models.pokemon_response_model.PokemonResponse
 import com.nicos.pokedex_compose_xr.data.dto.PokemonDetailsDto

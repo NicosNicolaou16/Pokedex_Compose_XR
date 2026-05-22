@@ -1,4 +1,4 @@
-package com.nicos.pokedex_compose_xr.domain.network.init_network
+package com.nicos.pokedex_compose_xr.data.network.init_network
 
 import com.google.gson.Gson
 import retrofit2.Retrofit
