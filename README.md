@@ -94,8 +94,8 @@ The project follows **Clean Architecture** principles combined with **MVVM (Mode
 
 *   **XR Compose version**: `1.0.0-alpha14`
 *   **XR Runtime version**: `1.0.0-alpha14`
-*   **Material3 XR Compose version**: `1.0.0-alpha14`
-*   **XR Extensions version**: `1.2.0`
+*   **Material3 XR Compose version**: `1.0.0-alpha17`
+*   **XR Extensions version**: `1.3.0`
 *   **Target SDK**: `36`
 *   **Minimum SDK**: `29`
 *   **Kotlin Version**: `2.3.10`
