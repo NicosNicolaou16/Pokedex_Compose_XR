@@ -65,6 +65,31 @@ This project is built using modern, recommended technologies for creating spatia
 *   **Custom Components**:
     *   **[PercentageWithAnimation](https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose)**: A custom Compose component built by [@NicosNicolaou16](https://github.com/NicosNicolaou16) to animate and display Pokémon stats.
 
+## 🏗️ Architecture
+
+The project follows **Clean Architecture** principles combined with **MVVM (Model-View-ViewModel)** and **Unidirectional Data Flow (UDF)**. This ensures a clean separation of concerns, making the codebase scalable, maintainable, and testable.
+
+### Project Structure
+
+```
+├── data/
+│   ├── di/                 # Hilt Modules
+│   ├── network/            # Retrofit DTOs and API Service
+│   ├── room_database/      # Room Entities and DAOs
+│   ├── repository_impl/    # Repository Implementations
+│   └── mappers/            # Data transformation logic
+├── domain/
+│   └── repositories/       # Repository Interfaces
+├── presentation/
+│   ├── navigation/         # Navigation 3 setup and Navigator
+│   ├── pokemon_list/       # List feature (Screen, ViewModel, State)
+│   └── pokemon_details/    # Detail feature (Screen, ViewModel, State)
+├── ui/
+│   └── theme/              # Compose Theme (Color, Type, etc.)
+└── utils/                  # Extension functions and generic classes
+```
+
+
 ## 🔧 Versioning
 
 *   **XR Compose version**: `1.0.0-alpha10`
