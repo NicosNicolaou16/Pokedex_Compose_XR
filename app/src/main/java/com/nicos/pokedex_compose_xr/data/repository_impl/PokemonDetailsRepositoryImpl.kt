@@ -6,7 +6,7 @@ import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsWi
 import com.nicos.pokedex_compose_xr.data.room_database.entities.toPokemonDetailsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.entities.toStatsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.init_database.MyRoomDatabase
-import com.nicos.pokedex_compose_xr.domain.dto.PokemonDetailsDto
+import com.nicos.pokedex_compose_xr.data.dto.PokemonDetailsDto
 import com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.models.PokemonDetailsUI
 import com.nicos.pokedex_compose_xr.domain.network.PokemonService
 import com.nicos.pokedex_compose_xr.domain.repositories.PokemonDetailsRepository

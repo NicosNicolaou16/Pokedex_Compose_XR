@@ -4,7 +4,7 @@ import androidx.core.text.isDigitsOnly
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonEntity
 import com.nicos.pokedex_compose_xr.data.room_database.entities.toPokemonEntity
 import com.nicos.pokedex_compose_xr.data.room_database.init_database.MyRoomDatabase
-import com.nicos.pokedex_compose_xr.domain.dto.PokemonDto
+import com.nicos.pokedex_compose_xr.data.dto.PokemonDto
 import com.nicos.pokedex_compose_xr.domain.network.PokemonService
 import com.nicos.pokedex_compose_xr.domain.repositories.PokemonListRepository
 import com.nicos.pokedex_compose_xr.utils.generic_classes.HandlingError

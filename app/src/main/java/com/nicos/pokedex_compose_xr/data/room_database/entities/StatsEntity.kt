@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.nicos.pokedex_compose_xr.domain.dto.StatDto
-import com.nicos.pokedex_compose_xr.domain.dto.StatsDto
+import com.nicos.pokedex_compose_xr.data.dto.StatDto
+import com.nicos.pokedex_compose_xr.data.dto.StatsDto
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["pokemonName"])],

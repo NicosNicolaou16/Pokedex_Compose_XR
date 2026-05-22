@@ -1,4 +1,4 @@
-package com.nicos.pokedex_compose_xr.domain.dto
+package com.nicos.pokedex_compose_xr.data.dto
 
 data class PokemonDto(
     val name: String,
