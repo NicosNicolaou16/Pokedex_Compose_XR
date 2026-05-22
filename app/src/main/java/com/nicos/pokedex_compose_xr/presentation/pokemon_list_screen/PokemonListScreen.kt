@@ -38,10 +38,12 @@ import androidx.xr.compose.subspace.SpatialPanel
 import androidx.xr.compose.subspace.SpatialRow
 import androidx.xr.compose.subspace.layout.SubspaceModifier
 import androidx.xr.compose.subspace.layout.height
+import androidx.xr.compose.subspace.layout.movable
 import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
+import com.nicos.pokedex_compose_xr.data.mappers.PokemonUi
 import com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.models.SelectedPokemonModel
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonEntity
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.CustomToolbar
@@ -67,8 +69,8 @@ fun PokemonListScreen(
             SpatialPanel(
                 SubspaceModifier
                     .height(900.dp)
-                    .width(500.dp),
-                dragPolicy = MovePolicy(),
+                    .width(500.dp)
+                    .movable(enabled = true),
                 resizePolicy = ResizePolicy(),
             ) {
                 Scaffold(topBar = {
@@ -112,7 +114,7 @@ fun PokemonListScreen(
 
 @Composable
 fun GridViewPokemonList(
-    listener: (PokemonEntity) -> Unit,
+    listener: (PokemonUi) -> Unit,
     paddingValues: PaddingValues,
     pokemonListViewModel: PokemonListViewModel = hiltViewModel()
 ) {
@@ -130,7 +132,7 @@ fun GridViewPokemonList(
         }) { pokemon ->
             LoadPokemonImage(
                 listener = listener,
-                pokemonEntity = pokemon
+                pokemonUi = pokemon
             )
         }
         item {
@@ -146,15 +148,15 @@ fun GridViewPokemonList(
 
 @Composable
 fun LoadPokemonImage(
-    listener: (PokemonEntity) -> Unit,
-    pokemonEntity: PokemonEntity
+    listener: (PokemonUi) -> Unit,
+    pokemonUi: PokemonUi
 ) {
     val context = LocalContext.current
     Card(
         modifier = Modifier
             .padding(5.dp)
             .clickable {
-                listener(pokemonEntity)
+                listener(pokemonUi)
             },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 0.dp
@@ -169,7 +171,7 @@ fun LoadPokemonImage(
     ) {
         AsyncImage(
             model = ImageRequest.Builder(context = context).apply {
-                data(pokemonEntity.imageUrl)
+                data(pokemonUi.imageUrl)
                 placeholder(getProgressDrawable(context))
                 error(android.R.drawable.stat_notify_error)
                 fallback(android.R.drawable.stat_notify_error)

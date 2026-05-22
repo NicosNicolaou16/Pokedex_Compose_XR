@@ -3,7 +3,7 @@ package com.nicos.pokedex_compose_xr.data.room_database.type_converters
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.nicos.pokedex_compose_xr.domain.dto.StatDto
+import com.nicos.pokedex_compose_xr.data.dto.StatDto
 import com.nicos.pokedex_compose_xr.data.room_database.entities.StatsEntity
 
 class ConverterStats {

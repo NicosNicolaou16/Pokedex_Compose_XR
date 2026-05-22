@@ -1,6 +1,6 @@
-package com.nicos.pokedex_compose_xr.domain.dto
+package com.nicos.pokedex_compose_xr.data.mappers
 
-data class PokemonDto(
+data class PokemonUi(
     val name: String,
     val url: String?,
     var imageUrl: String?,

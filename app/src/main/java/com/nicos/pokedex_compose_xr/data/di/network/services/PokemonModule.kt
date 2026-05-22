@@ -1,6 +1,6 @@
-package com.nicos.pokedex_compose_xr.domain.di.network.services
+package com.nicos.pokedex_compose_xr.data.di.network.services
 
-import com.nicos.pokedex_compose_xr.domain.network.PokemonService
+import com.nicos.pokedex_compose_xr.data.network.PokemonService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
