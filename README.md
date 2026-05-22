@@ -98,8 +98,8 @@ The project follows **Clean Architecture** principles combined with **MVVM (Mode
 *   **XR Extensions version**: `1.3.0`
 *   **Target SDK**: `36`
 *   **Minimum SDK**: `29`
-*   **Kotlin Version**: `2.3.10`
-*   **Gradle Version**: `9.0.0`
+*   **Kotlin Version**: `2.3.21`
+*   **Gradle Version**: `9.2.1`
 
 ## 📚 References & Tutorials
 
