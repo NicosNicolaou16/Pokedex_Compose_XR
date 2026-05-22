@@ -2,12 +2,12 @@ package com.nicos.pokedex_compose_xr.data.mappers
 
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonDetailsWithStatsEntity
-import com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.models.PokemonDetailsUI
+import com.nicos.pokedex_compose_xr.data.room_database.entities.StatsEntity
 
 fun PokemonDetailsWithStatsEntity.toPokemonDetailsUi(): PokemonDetailsUI {
     return PokemonDetailsUI(
         name = this.pokemonDetailsEntity.name,
-        stats = this.statsEntityList,
+        stats = this.statsEntityList.map { it.toStatsUi() }.toMutableList(),
         weight = this.pokemonDetailsEntity.weight ?: 0,
     )
 }
@@ -18,6 +18,25 @@ fun PokemonDetailsUI.toPokemonDetailsEntity(): PokemonDetailsWithStatsEntity {
             name = this.name,
             weight = this.weight
         ),
-        statsEntityList = this.stats
+        statsEntityList = this.stats.map {
+            it.toStatsEntity()
+        }
+    )
+}
+
+fun StatsEntity.toStatsUi(): StatsUi {
+    return StatsUi(
+        baseStat = this.baseStat,
+        statName = this.statName,
+        pokemonName = this.pokemonName,
+    )
+}
+
+
+fun StatsUi.toStatsEntity(): StatsEntity {
+    return StatsEntity(
+        baseStat = this.baseStat,
+        statName = this.statName,
+        pokemonName = this.pokemonName,
     )
 }

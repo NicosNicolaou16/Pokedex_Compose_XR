@@ -12,5 +12,5 @@ data class PokemonDetailsWithStatsEntity(
         parentColumn = "name",
         entityColumn = "pokemonName"
     )
-    val statsEntityList: MutableList<StatsEntity>
+    val statsEntityList: List<StatsEntity>
 )
