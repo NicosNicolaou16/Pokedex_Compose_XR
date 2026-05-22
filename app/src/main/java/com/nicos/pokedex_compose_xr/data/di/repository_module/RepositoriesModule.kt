@@ -1,4 +1,4 @@
-package com.nicos.pokedex_compose.data.di.repository_module
+package com.nicos.pokedex_compose_xr.data.di.repository_module
 
 import com.nicos.pokedex_compose_xr.data.network.PokemonService
 import com.nicos.pokedex_compose_xr.data.repository_impl.PokemonDetailsRepositoryImpl
