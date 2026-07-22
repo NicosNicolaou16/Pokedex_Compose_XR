@@ -1,6 +1,6 @@
 [versions]
 agp = "9.3.0"
-composeXr = "1.0.0-alpha14"
+composeXr = "1.0.0-alpha16"
 kotlin = "2.3.21"
 coreKtx = "1.18.0"
 junit = "4.13.2"
