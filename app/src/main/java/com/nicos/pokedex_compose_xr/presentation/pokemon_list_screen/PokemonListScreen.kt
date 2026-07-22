@@ -39,6 +39,7 @@ import androidx.xr.compose.subspace.SpatialRow
 import androidx.xr.compose.subspace.layout.SubspaceModifier
 import androidx.xr.compose.subspace.layout.height
 import androidx.xr.compose.subspace.layout.movable
+import androidx.xr.compose.subspace.layout.resizable
 import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
@@ -70,8 +71,8 @@ fun PokemonListScreen(
                 SubspaceModifier
                     .height(900.dp)
                     .width(500.dp)
-                    .movable(enabled = true),
-                resizePolicy = ResizePolicy(),
+                    .movable(enabled = true)
+                    .resizable(),
             ) {
                 Scaffold(topBar = {
                     CustomToolbar(
