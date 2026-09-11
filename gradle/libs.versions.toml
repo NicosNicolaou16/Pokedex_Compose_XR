@@ -30,7 +30,7 @@ gsonVersion = "2.14.0"
 paletteVersion = "1.0.0"
 kotlinSerializationVersion = "1.11.0"
 percentagesWithAnimationComposeVersion = "1.3.9"
-extensionsXr = "1.3.0"
+extensionsXr = "1.4.0"
 
 [libraries]
 # My Library - https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose
