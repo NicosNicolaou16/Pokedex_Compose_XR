@@ -93,7 +93,7 @@ The project follows **Clean Architecture** principles combined with **MVVM (Mode
 ## 🔧 Versioning
 
 *   **XR Compose version**: `1.0.0-alpha17`
-*   **XR Runtime version**: `1.0.0-beta01`
+*   **XR Runtime version**: `1.0.0-rc01`
 *   **Material3 XR Compose version**: `1.0.0-alpha17`
 *   **XR Extensions version**: `1.3.0`
 *   **Target SDK**: `37`
