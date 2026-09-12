@@ -4,6 +4,9 @@ import androidx.benchmark.macro.junit4.BaselineProfileRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Direction
+import androidx.test.uiautomator.Until.hasObject
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -63,6 +66,24 @@ class BaselineProfileGenerator {
 
             // Check UiAutomator documentation for more information how to interact with the app.
             // https://d.android.com/training/testing/other-components/ui-automator
+
+            // 1. Wait until the Pokémon list has loaded (network + Room).
+            //    Anchor on something stable that appears once data is on screen.
+            device.wait(hasObject(By.scrollable(true)), 10_000)
+
+            // 2. Scroll the list to exercise item composition / image loading (Coil).
+            val list = device.findObject(By.scrollable(true))
+            list?.let {
+                it.setGestureMargin(device.displayWidth / 5)
+                it.scroll(Direction.DOWN, 1.0f)
+                it.scroll(Direction.UP, 1.0f)
+            }
+
+            // 3. Open a detail screen to capture that navigation path.
+            device.findObject(By.scrollable(true))
+                ?.children?.firstOrNull()
+                ?.click()
+            device.waitForIdle()
         }
     }
 }
