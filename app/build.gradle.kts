@@ -78,6 +78,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.compose)
+    "baselineProfile"(project(":baselineprofile"))
     compileOnly(libs.androidx.extensions.xr)
     // Compose
     implementation(libs.androidx.activity.compose)
