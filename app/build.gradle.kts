@@ -8,6 +8,8 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.parcelize)
     alias(libs.plugins.androidx.room)
+    // Baselines Profile
+    alias(libs.plugins.androidx.baselineprofile)
 }
 
 android {
@@ -115,6 +117,9 @@ dependencies {
     ksp(libs.hilt.compiler)
     // Palette
     implementation(libs.androidx.palette.ktx)
+    // Baselines Profile
+    implementation(libs.androidx.profileinstaller)
+    "baselineProfile"(project(":baselineprofile"))
     // Unit Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -61,6 +61,7 @@ This project is built using modern, recommended technologies for creating spatia
     *   **[Hilt](https://developer.android.com/training/dependency-injection/hilt-android)**: A dependency injection library that reduces the boilerplate of manual dependency injection.
     *   **[KSP (Kotlin Symbol Processing)](https://developer.android.com/build/migrate-to-ksp)**: An API for creating lightweight, high-performance compiler plugins in Kotlin.
     *   **[R8](https://developer.android.com/build/shrink-code)**: A code shrinker that reduces your app's size by removing unused code and resources.
+    *   **[Baseline Profiles](https://developer.android.com/topic/performance/baselineprofiles)**: Improves app performance by pre-compiling critical code paths.
 
 *   **Custom Components**:
     *   **[PercentageWithAnimation](https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose)**: A custom Compose component built by [@NicosNicolaou16](https://github.com/NicosNicolaou16) to animate and display Pokémon stats.
@@ -88,6 +89,23 @@ The project follows **Clean Architecture** principles combined with **MVVM (Mode
 │   └── theme/              # Compose Theme (Color, Type, etc.)
 └── utils/                  # Extension functions and generic classes
 ```
+
+## ⚡ Performance Optimization
+
+To ensure the best user experience and smooth animations in a spatial environment, Pokedex Compose XR uses **Baseline Profiles**. These profiles provide a list of classes and methods that are pre-compiled on the device, reducing startup time and improving frame rates by minimizing Just-In-Time (JIT) compilation during critical user journeys.
+
+### Key Optimized Journeys:
+*   **App Startup**: Faster initial launch.
+*   **List Navigation**: Smooth scrolling through the Pokémon collection.
+*   **Image Loading**: Optimized Coil image loading during list interactions.
+*   **Screen Transitions**: Seamless navigation between the list and detail screens.
+
+### Generating Baseline Profiles:
+You can generate a new Baseline Profile by running the following Gradle command:
+```bash
+./gradlew :app:generateReleaseBaselineProfile
+```
+The generated profile will be automatically picked up during the release build process to optimize the final APK.
 
 
 ## 🔧 Versioning

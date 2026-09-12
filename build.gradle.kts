@@ -7,4 +7,7 @@ plugins {
     alias(libs.plugins.hilt.android) apply false
     alias(libs.plugins.parcelize) apply false
     alias(libs.plugins.androidx.room) apply false
+    // Baselines Profile
+    alias(libs.plugins.android.test) apply false
+    alias(libs.plugins.androidx.baselineprofile) apply false
 }

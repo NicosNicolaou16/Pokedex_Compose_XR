@@ -31,6 +31,11 @@ paletteVersion = "1.0.0"
 kotlinSerializationVersion = "1.11.0"
 percentagesWithAnimationComposeVersion = "1.4.0"
 extensionsXr = "1.4.0"
+# Baseline Profile
+androidxBaselineprofile = "1.5.0"
+profileinstaller = "1.4.1"
+uiautomator = "2.4.0"
+benchmarkMacro = "1.5.0"
 
 [libraries]
 # My Library - https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose
@@ -88,6 +93,10 @@ dagger-compiler = { group = "com.google.dagger", name = "hilt-compiler", version
 hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompilerVersion" }
 # Palette
 androidx-palette-ktx = { group = "androidx.palette", name = "palette-ktx", version.ref = "paletteVersion" }
+# BaseLine Profile
+androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
+androidx-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiautomator" }
+androidx-benchmark-macro-junit4 = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "benchmarkMacro" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -98,3 +107,5 @@ hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersi
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 androidx-room = { id = "androidx.room3", version.ref = "roomVersion" }
+androidx-baselineprofile = { id = "androidx.baselineprofile", version.ref = "androidxBaselineprofile" }
+android-test = { id = "com.android.test", version.ref = "agp" }
