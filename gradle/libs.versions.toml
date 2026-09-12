@@ -108,4 +108,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 androidx-room = { id = "androidx.room3", version.ref = "roomVersion" }
 androidx-baselineprofile = { id = "androidx.baselineprofile", version.ref = "androidxBaselineprofile" }
-android-test = { id = "com.android.test", version = "agp" }
+android-test = { id = "com.android.test", version.ref = "agp" }
