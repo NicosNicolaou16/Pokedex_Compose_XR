@@ -34,7 +34,7 @@ extensionsXr = "1.4.0"
 # Baseline Profile
 androidxBaselineprofile = "1.5.0"
 profileinstaller = "1.4.1"
-uiautomator = "2.4.0"
+uiautomator = "2.4.1"
 benchmarkMacro = "1.5.0"
 
 [libraries]
