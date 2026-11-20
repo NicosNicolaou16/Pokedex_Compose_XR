@@ -118,7 +118,7 @@ The generated profile will be automatically picked up during the release build p
 *   **Minimum SDK**: `29`
 *   **Kotlin Version**: `2.4.21`
 *   **AGP Version**: `9.5.2`
-*   **Gradle Version**: `9.9.0`
+*   **Gradle Version**: `9.9.2`
 
 ## 📚 References & Tutorials
 
