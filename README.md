@@ -116,7 +116,7 @@ The generated profile will be automatically picked up during the release build p
 *   **XR Extensions version**: `1.4.0`
 *   **Target SDK**: `37.1`
 *   **Minimum SDK**: `29`
-*   **Kotlin Version**: `2.4.20`
+*   **Kotlin Version**: `2.4.21`
 *   **Gradle Version**: `9.4.0`
 
 ## 📚 References & Tutorials
