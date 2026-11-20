@@ -29,7 +29,7 @@ swipeRefreshLayoutVersion = "1.2.0"
 gsonVersion = "2.15.0"
 paletteVersion = "1.1.0"
 kotlinSerializationVersion = "1.13.0"
-percentagesWithAnimationComposeVersion = "1.4.0"
+percentagesWithAnimationComposeVersion = "1.4.3"
 extensionsXr = "1.4.0"
 # Baseline Profile
 androidxBaselineprofile = "1.5.0"
