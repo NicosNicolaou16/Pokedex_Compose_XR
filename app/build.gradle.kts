@@ -101,8 +101,6 @@ dependencies {
     implementation(libs.retrofit.kotlinx.serialization)
     // OkHttp
     implementation(libs.okHttp)
-    // Gson
-    implementation(libs.gson)
     // Coil
     implementation(libs.coil)
     // Coroutines
