@@ -1,10 +1,7 @@
-@file:OptIn(ExperimentalSharedTransitionApi::class)
-
 package com.nicos.pokedex_compose_xr.presentation.pokemon_list_screen
 
 import android.annotation.SuppressLint
 import androidx.activity.SystemBarStyle
-import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
