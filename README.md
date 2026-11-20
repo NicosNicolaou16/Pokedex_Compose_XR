@@ -114,7 +114,7 @@ The generated profile will be automatically picked up during the release build p
 *   **XR Runtime version**: `1.0.0`
 *   **Material3 XR Compose version**: `1.0.0-alpha18`
 *   **XR Extensions version**: `1.4.0`
-*   **Target SDK**: `37`
+*   **Target SDK**: `37.1`
 *   **Minimum SDK**: `29`
 *   **Kotlin Version**: `2.4.20`
 *   **Gradle Version**: `9.4.0`
