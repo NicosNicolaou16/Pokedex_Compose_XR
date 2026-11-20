@@ -110,7 +110,7 @@ The generated profile will be automatically picked up during the release build p
 
 ## 🔧 Versioning
 
-*   **XR Compose version**: `1.0.0-alpha17`
+*   **XR Compose version**: `1.0.0-rc01`
 *   **XR Runtime version**: `1.0.0-rc01`
 *   **Material3 XR Compose version**: `1.0.0-alpha17`
 *   **XR Extensions version**: `1.4.0`
