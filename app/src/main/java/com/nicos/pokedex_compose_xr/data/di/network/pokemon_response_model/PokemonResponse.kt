@@ -1,10 +1,10 @@
 package com.nicos.pokedex_compose_xr.data.di.network.pokemon_response_model
 
-import com.google.gson.annotations.SerializedName
 import com.nicos.pokedex_compose_xr.data.dto.PokemonDto
+import kotlinx.serialization.SerialName
 
 data class PokemonResponse(
-    @SerializedName("next") val nextUrl: String?,
-    @SerializedName("results") val results: MutableList<PokemonDto>
+    @SerialName("next") val nextUrl: String?,
+    @SerialName("results") val results: MutableList<PokemonDto>
 ) {
 }
