@@ -16,6 +16,7 @@ android {
     namespace = "com.nicos.pokedex_compose_xr"
     buildToolsVersion = "37.0.0"
     compileSdk = 37
+    compileSdkMinor = 1
 
     defaultConfig {
         applicationId = "com.nicos.pokedex_compose_xr"

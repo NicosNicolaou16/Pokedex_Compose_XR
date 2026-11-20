@@ -32,8 +32,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.xr.compose.spatial.Subspace
-import androidx.xr.compose.subspace.MovePolicy
-import androidx.xr.compose.subspace.ResizePolicy
 import androidx.xr.compose.subspace.SpatialPanel
 import androidx.xr.compose.subspace.SpatialRow
 import androidx.xr.compose.subspace.layout.SubspaceModifier
@@ -46,7 +44,6 @@ import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.nicos.pokedex_compose_xr.data.mappers.PokemonUi
 import com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.models.SelectedPokemonModel
-import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonEntity
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.CustomToolbar
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.ShowDialog
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.StartDefaultLoader
