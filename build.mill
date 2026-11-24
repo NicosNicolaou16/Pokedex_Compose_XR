@@ -57,6 +57,8 @@ object app extends AndroidAppKotlinModule, AndroidR8AppModule, AndroidHiltSuppor
     Task.log.info(s"Downloading $image")
     val installCall = os.call((
       androidSdkModule().sdkManagerExe().path,
+      "--channel",
+      "3",
       "--install",
       image
     ))
@@ -76,6 +78,11 @@ object app extends AndroidAppKotlinModule, AndroidR8AppModule, AndroidHiltSuppor
   override def androidR8Args: T[Seq[String]] = super.androidR8Args() ++ defaultResolver().classpath(compileMvnDeps())
     .flatMap(pathRef => Seq("--classpath", pathRef.path.toString()))
 
+  override def androidPackagedDeps = Task {
+    super.androidPackagedDeps().filterNot(_.path.toString.endsWith("extensions-xr-1.4.0.jar"))
+  }
+
+  override def androidR8CompileOnlyClasspathFile = None
 
   override def mvnDeps: T[Seq[Dep]] = super.mvnDeps() ++ Seq(
     mvn"org.jetbrains.kotlin:kotlin-stdlib:2.4.21",
@@ -93,6 +100,7 @@ object app extends AndroidAppKotlinModule, AndroidR8AppModule, AndroidHiltSuppor
     mvn"androidx.compose.material3:material3",
     mvn"androidx.hilt:hilt-navigation-compose:1.4.0",
     mvn"androidx.compose.runtime:runtime:1.13.0",
+    mvn"androidx.activity:activity-ktx:1.13.0",
     mvn"androidx.compose.runtime:runtime-livedata:1.13.0",
     mvn"androidx.lifecycle:lifecycle-viewmodel-compose:2.11.1",
     mvn"androidx.compose.animation:animation:1.13.0",
@@ -114,8 +122,8 @@ object app extends AndroidAppKotlinModule, AndroidR8AppModule, AndroidHiltSuppor
   def kotlinSymbolProcessors: T[Seq[Dep]] = super.kotlinSymbolProcessors() ++ Seq(
     mvn"com.google.dagger:hilt-android-compiler:2.60.1",
     mvn"com.google.dagger:hilt-compiler:2.60.1",
-    mvn"androidx.hilt:hilt-compiler:1.2.0",
-    mvn"androidx.room:room-compiler:2.7.2"
+    mvn"androidx.hilt:hilt-compiler:1.4.0",
+    mvn"androidx.room3:room3-compiler:3.1.0-alpha04"
   )
 
   override def kotlincOptions = super.kotlincOptions() ++ Seq(
@@ -138,5 +146,5 @@ object Versions {
 
   val kspVersion = "2.3.13"
   val androidCompileSdk = 37
-  val androidMinSdk = 37
+  val androidMinSdk = 29
 }
