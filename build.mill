@@ -1,0 +1,142 @@
+package build
+
+import mill.*
+import mill.api.*
+import mill.androidlib.*
+import mill.androidlib.hilt.AndroidHiltSupport
+import coursier.{MavenRepository, Repository}
+import mill.kotlinlib.*
+import os.RelPath.stringRelPathValidated
+import coursier.params.ResolutionParams
+import coursier.core.VariantSelector.VariantMatcher
+import kotlinlib.ksp.KspModule
+
+object androidSdkModule0 extends AndroidSdkModule {
+  def buildToolsVersion = "37.0.0"
+  def platformsVersion = "android-37.0"
+  override def cmdlineToolsVersion = "23.0"
+}
+
+object app extends AndroidAppKotlinModule, AndroidR8AppModule, AndroidHiltSupport {
+
+  override def androidApplicationNamespace = "com.nicos.pokedex_compose_xr"
+  override def androidApplicationId = "com.nicos.pokedex_compose_xr"
+
+  override def repositoriesTask: Task[Seq[Repository]] = Task.Anon {
+    super.repositoriesTask() ++
+      Seq(MavenRepository.apply("https://jitpack.io"))
+  }
+
+  override def bomMvnDeps: T[Seq[Dep]] = Seq(
+    mvn"androidx.compose:compose-bom:2026.11.01"
+  )
+
+  override def androidProjectProguardFiles: T[Seq[PathRef]] = Task.Sources(
+    "proguard-rules.pro"
+  )
+
+  override def androidDefaultProguardFileNames: Task[Seq[String]] = Task.Anon {
+    Seq("proguard-android-optimize.txt")
+  }
+
+  def androidIsDebug = true
+
+  def androidDebugSettings: T[AndroidBuildTypeSettings] = Task.Input {
+    AndroidBuildTypeSettings(
+      isMinifyEnabled = true
+    )
+  }
+
+  def compileMvnDeps: T[Seq[Dep]] = Seq(
+    mvn"com.android.extensions.xr:extensions-xr:1.4.0"
+  )
+
+  def sdkInstallSystemImage: T[String] = Task {
+    val image =
+      s"system-images;android-34;google-xr;${androidVirtualDeviceArchitecture()}"
+    Task.log.info(s"Downloading $image")
+    val installCall = os.call((
+      androidSdkModule().sdkManagerExe().path,
+      "--install",
+      image
+    ))
+
+    if (installCall.exitCode != 0) {
+      Task.log.error(
+        s"Error trying to install android emulator system image ${installCall.err.text()}"
+      )
+      throw new Exception(s"Failed to install system image $image: ${installCall.exitCode}")
+    }
+    image
+  }
+  override def androidEnableCompose: T[Boolean] = Task {
+    true
+  }
+
+  override def androidR8Args: T[Seq[String]] = super.androidR8Args() ++ defaultResolver().classpath(compileMvnDeps())
+    .flatMap(pathRef => Seq("--classpath", pathRef.path.toString()))
+
+
+  override def mvnDeps: T[Seq[Dep]] = super.mvnDeps() ++ Seq(
+    mvn"org.jetbrains.kotlin:kotlin-stdlib:2.4.21",
+    mvn"com.github.NicosNicolaou16:PercentagesWithAnimationCompose:1.4.3",
+    mvn"androidx.core:core-ktx:1.19.1",
+    mvn"androidx.swiperefreshlayout:swiperefreshlayout:1.2.0",
+    mvn"androidx.lifecycle:lifecycle-runtime-ktx:2.11.1",
+    mvn"androidx.xr.compose.material3:material3:1.0.0-alpha18",
+    mvn"androidx.xr.runtime:runtime:1.0.0",
+    mvn"androidx.xr.compose:compose:1.0.0-rc01",
+    mvn"androidx.activity:activity-compose:1.13.0",
+    mvn"androidx.compose.ui:ui:1.13.0",
+    mvn"androidx.compose.ui:ui-graphics",
+    mvn"androidx.compose.ui:ui-tooling-preview",
+    mvn"androidx.compose.material3:material3",
+    mvn"androidx.hilt:hilt-navigation-compose:1.4.0",
+    mvn"androidx.compose.runtime:runtime:1.13.0",
+    mvn"androidx.compose.runtime:runtime-livedata:1.13.0",
+    mvn"androidx.lifecycle:lifecycle-viewmodel-compose:2.11.1",
+    mvn"androidx.compose.animation:animation:1.13.0",
+    mvn"androidx.compose.foundation:foundation:1.13.0",
+    mvn"com.squareup.retrofit2:retrofit:3.0.0",
+    mvn"com.squareup.retrofit2:converter-kotlinx-serialization:3.0.0",
+    mvn"com.squareup.okhttp3:okhttp:5.5.1",
+    mvn"io.coil-kt:coil-compose:2.7.0",
+    mvn"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0",
+    mvn"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0",
+    mvn"org.jetbrains.kotlinx:kotlinx-serialization-json:1.13.0",
+    mvn"com.google.android.material:material:1.14.0",
+    mvn"com.google.dagger:hilt-android:2.60.1",
+    mvn"androidx.palette:palette-ktx:1.1.0",
+    mvn"androidx.profileinstaller:profileinstaller:1.4.1",
+    mvn"androidx.room3:room3-runtime:3.1.0-alpha04"
+  )
+
+  def kotlinSymbolProcessors: T[Seq[Dep]] = super.kotlinSymbolProcessors() ++ Seq(
+    mvn"com.google.dagger:hilt-android-compiler:2.60.1",
+    mvn"com.google.dagger:hilt-compiler:2.60.1",
+    mvn"androidx.hilt:hilt-compiler:1.2.0",
+    mvn"androidx.room:room-compiler:2.7.2"
+  )
+
+  override def kotlincOptions = super.kotlincOptions() ++ Seq(
+    "-jvm-target",
+    "21"
+  )
+
+  override def androidMinSdk: T[Int] = Task { Versions.androidMinSdk }
+
+  override def androidCompileSdk: T[Int] = Task { Versions.androidCompileSdk }
+  override def androidSdkModule: ModuleRef[AndroidSdkModule] = ModuleRef(androidSdkModule0)
+
+  override def kotlinVersion: T[String] = Versions.kotlinVersion
+  override def kspVersion: T[String] = Versions.kspVersion
+  override def kspJvmTarget: T[String] = "21"
+}
+
+object Versions {
+  val kotlinVersion = "2.4.21"
+
+  val kspVersion = "2.3.13"
+  val androidCompileSdk = 37
+  val androidMinSdk = 37
+}

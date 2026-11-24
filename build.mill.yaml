@@ -1,8 +1,0 @@
-mill-version: 1.4.0-M3
-mill-jvm-version: system
-extends: Module
-
-object androidSdkModule0:
-  extends: mill.androidlib.AndroidSdkModule
-  buildToolsVersion: 37.0.0
-  platformsVersion: android-37.0
