@@ -11,28 +11,7 @@
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/@nicosnicolaou16)
 [![Static Badge](https://img.shields.io/badge/Developer_Profile-blue?style=for-the-badge&label=Google)](https://g.dev/nicolaou_nicos)
 
-Pokedex Compose XR is an open-source project that blends the charm of the Pokédex with cutting-edge
-Extended Reality (XR) experiences, powered by Jetpack Compose. Built on top of the early-access
-AndroidX XR library, it showcases how immersive Pokémon data visualization can work across AR and VR
-devices.
-
-Key features include:
-
-- Immersive Pokémon browsing – View Pokémon models, stats, and details in a fully spatial
-  environment.
-
-- Compose-driven UI – Leverage the power of Jetpack Compose to create responsive, dynamic XR
-  layouts.
-
-- Interaction experiments – Test gesture controls, spatial navigation, and XR-native interface
-  patterns.
-
-- Extensible architecture – Replace datasets, plug in new XR hardware, or adapt it for other 3D
-  catalog experiences.
-
-Pokedex Compose XR is both a showcase and a playground for developers interested in building XR apps
-with the AndroidX XR library, offering real-world examples to accelerate experimentation and
-learning.
+Pokedex Compose XR is an open-source project that blends the charm of the Pokédex with cutting-edge Extended Reality (XR) experiences, powered by Jetpack Compose. Built on top of the early-access AndroidX XR library, it showcases how immersive Pokémon data visualization can work across AR and VR devices.
 
 <p align="left">
   <a title="simulator_image"><img src="examples/Screenshot_20250810_024943.png" height="500" width="200"></a>
@@ -40,75 +19,118 @@ learning.
   <a title="simulator_image"><img src="examples/example_gif1.gif" height="500" width="200"></a>
 </p>
 
-## How to Test Pokedex Compose XR
+## ✨ Key Features
+
+*   **Immersive Pokémon Browsing:** View Pokémon models, stats, and details in a fully spatial environment.
+*   **Compose-Driven UI:** Leverage the power of Jetpack Compose to create responsive, dynamic XR layouts.
+*   **Interaction Experiments:** Test gesture controls, spatial navigation, and XR-native interface patterns.
+*   **Extensible Architecture:** Designed to be easily adapted for other 3D catalog experiences by replacing datasets or integrating new XR hardware.
+
+Pokedex Compose XR is both a showcase and a playground for developers interested in building XR apps with the AndroidX XR library, offering real-world examples to accelerate experimentation and learning.
+
+## 🔧 How to Test
 
 To run and experiment with Pokedex Compose XR, you’ll need:
 
-1. The latest Canary build of Android Studio – for example, I’m currently using Android Studio
-   Narwhal
-   3 Feature Drop | 2025.1.3 Canary 4.
+1.  **The latest Canary build of Android Studio** (e.g., Android Studio Narwhal 3 Feature Drop | 2025.1.3 Canary 4).
+2.  **XR System Images for the Android Emulator** to simulate an Extended Reality environment without physical hardware.
+3.  **Clone this repository**, open it in Android Studio, and select an XR Emulator device profile to launch the app.
 
-2. XR System Images for the XR Emulator – these are required to simulate the Extended Reality
-   environment without physical hardware.
+This setup ensures you can explore the project as intended in a full virtual XR environment.
 
-3. Clone this repository, open it in Android Studio, and select an XR Emulator device profile when
-   launching the app.
+## 🛠️ Tech Stack & Core Technologies
 
-This setup ensures you can explore the project as intended, leveraging the early-access AndroidX XR
-library in a full virtual XR environment.
+This project is built using modern, recommended technologies for creating spatial and immersive Android experiences.
 
-# The Project Contain the following technologies
+*   **UI & Spatialization**:
+    *   **[Jetpack Compose for XR](https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui)**: A declarative UI toolkit for building native, spatial user interfaces in XR.
+    *   **[Palette API](https://developer.android.com/develop/ui/views/graphics/palette-colors)**: Extracts prominent colors from Pokémon images to dynamically theme UI components.
+    *   **[Coil](https://coil-kt.github.io/coil/compose/)**: A lightweight, modern image loading library for Android backed by Kotlin Coroutines.
 
-The programming language is the [Kotlin](https://kotlinlang.org/docs/getting-started.html), it is a
-modern, JVM-based programming language that is concise, safe, and interoperable with Java. <br />
-[Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) is used for asynchronous
-tasks. <br />
-[Kotlin KTX](https://developer.android.com/kotlin/ktx) is a collection of Kotlin extensions that
-offer more concise and expressive code for working with Android APIs and libraries.
-The UI is build using [Jetpack Compose](https://developer.android.com/develop/ui/compose). <br />
-[Retrofit](https://square.github.io/retrofit/) is responsible for making requests and retrieving
-data from the remote server. ([Repository](https://github.com/square/retrofit)) <br />
-[Room Database](https://developer.android.com/training/data-storage/room) is responsible for saving
-the retrieved data from the remote server, querying data from the local database, and supporting
-offline functionality.  <br />
-[Palette](https://developer.android.com/develop/ui/views/graphics/palette-colors) is used to
-retrieve the color from the image; in our case, we are using the Pokémon color to paint the linear
-indicator with the same color. <br />
-[KSP](https://developer.android.com/build/migrate-to-ksp) ("Kotlin Symbol Processing") is a tool for
-efficient annotation processing in Kotlin, providing faster code generation and symbol manipulation
-compared to KAPT. [Repository](https://github.com/google/ksp) <br />
-[Coil](https://coil-kt.github.io/coil/compose/) for Jetpack Compose is a library that it is
-responsible for loading the images
-asynchronous. ([Coil Documentation](https://coil-kt.github.io/coil/), [Repository](https://github.com/coil-kt/coil)) <br />
-[Hilt Dependencies Injection](https://developer.android.com/training/dependency-injection/hilt-android)
-is an Android library that simplifies dependency injection by using annotations to automatically
-manage and provide dependencies across components, built on top of
-Dagger. ([Documentation](https://dagger.dev/hilt/)) <br />
-[MVVM](https://developer.android.com/topic/architecture#recommended-app-arch) with repository is an
-architecture where the Repository manages data sources (e.g., network, database), the ViewModel
-processes the data for the UI, and the View displays the UI, ensuring a clear separation of
-concerns. <br />
-[UI State](https://developer.android.com/topic/architecture/ui-layer/events#handle-viewmodel-events)
-to initial, loading, loaded and error. <br />
-[R8](https://developer.android.com/build/shrink-code) enabled, is a code shrinker and obfuscator for
-Android that optimizes and reduces the size of APKs by removing unused code and resources, while
-also obfuscating the remaining code to improve security. <br />
-The percentage for showing the skills of each Pokémon is calculated using
-the [PercentageWithAnimation](https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose)
-built by [@NicosNicolaou16](https://github.com/NicosNicolaou16). <br />
+*   **Core Architecture & Language**:
+    *   **[Kotlin](https://kotlinlang.org/docs/getting-started.html)**: The primary programming language, offering concise, safe, and modern syntax.
+    *   **[Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) & [KTX](https://developer.android.com/kotlin/ktx)**: For managing background threads and writing more expressive code.
+    *   **[MVVM Architecture](https://developer.android.com/topic/architecture#recommended-app-arch)**: A clear separation of concerns between the UI, business logic, and data layers using a Repository pattern.
+    *   **[UI State Management](https://developer.android.com/topic/architecture/ui-layer/events#handle-viewmodel-events)**: Manages UI state for loading, loaded, and error conditions.
 
-## Versioning
+*   **Data & Networking**:
+    *   **[Retrofit](https://square.github.io/retrofit/)**: A type-safe HTTP client for fetching data from the remote server.
+    *   **[Room Database](https://developer.android.com/training/data-storage/room)**: Provides an abstraction layer over SQLite for robust offline data access.
 
-XR Compose version: 1.0.0-alpha06 <br />
-XR Runtime version: 1.0.0-alpha05 <br />
-Material3 XR Compose version: 1.0.0-alpha10 <br />
-XR Extensions version: 1.0.0 <br />
-Target SDK version: 36 <br />
-Minimum SDK version: 29 <br />
-Kotlin version: 2.2.10 <br />
-Gradle version: 8.13.0 <br />
+*   **Dependency Injection & Build Tools**:
+    *   **[Hilt](https://developer.android.com/training/dependency-injection/hilt-android)**: A dependency injection library that reduces the boilerplate of manual dependency injection.
+    *   **[KSP (Kotlin Symbol Processing)](https://developer.android.com/build/migrate-to-ksp)**: An API for creating lightweight, high-performance compiler plugins in Kotlin.
+    *   **[R8](https://developer.android.com/build/shrink-code)**: A code shrinker that reduces your app's size by removing unused code and resources.
+    *   **[Baseline Profiles](https://developer.android.com/topic/performance/baselineprofiles)**: Improves app performance by pre-compiling critical code paths.
 
-## References/Tutorials Follow
+*   **Custom Components**:
+    *   **[PercentageWithAnimation](https://github.com/NicosNicolaou16/PercentagesWithAnimationCompose)**: A custom Compose component built by [@NicosNicolaou16](https://github.com/NicosNicolaou16) to animate and display Pokémon stats.
 
-https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui <br />
-https://android-developers.googleblog.com/2024/12/introducing-android-xr-sdk-developer-preview.html <br />
+## 🏗️ Architecture
+
+The project follows **Clean Architecture** principles combined with **MVVM (Model-View-ViewModel)** and **Unidirectional Data Flow (UDF)**. This ensures a clean separation of concerns, making the codebase scalable, maintainable, and testable.
+
+### Project Structure
+
+```
+├── data/
+│   ├── di/                 # Hilt Modules
+│   ├── network/            # Retrofit DTOs and API Service
+│   ├── room_database/      # Room Entities and DAOs
+│   ├── repository_impl/    # Repository Implementations
+│   └── mappers/            # Data transformation logic
+├── domain/
+│   └── repositories/       # Repository Interfaces
+├── presentation/
+│   ├── navigation/         # Navigation 3 setup and Navigator
+│   ├── pokemon_list/       # List feature (Screen, ViewModel, State)
+│   └── pokemon_details/    # Detail feature (Screen, ViewModel, State)
+├── ui/
+│   └── theme/              # Compose Theme (Color, Type, etc.)
+└── utils/                  # Extension functions and generic classes
+```
+
+## ⚡ Performance Optimization
+
+To ensure the best user experience and smooth animations in a spatial environment, Pokedex Compose XR uses **Baseline Profiles**. These profiles provide a list of classes and methods that are pre-compiled on the device, reducing startup time and improving frame rates by minimizing Just-In-Time (JIT) compilation during critical user journeys.
+
+### Key Optimized Journeys:
+*   **App Startup**: Faster initial launch.
+*   **List Navigation**: Smooth scrolling through the Pokémon collection.
+*   **Image Loading**: Optimized Coil image loading during list interactions.
+*   **Screen Transitions**: Seamless navigation between the list and detail screens.
+
+### Generating Baseline Profiles:
+You can generate a new Baseline Profile by running the following Gradle command:
+```bash
+./gradlew :app:generateReleaseBaselineProfile
+```
+The generated profile will be automatically picked up during the release build process to optimize the final APK.
+
+
+## 🔧 Versioning
+
+*   **XR Compose version**: `1.0.0-rc01`
+*   **XR Runtime version**: `1.0.0`
+*   **Material3 XR Compose version**: `1.0.0-alpha18`
+*   **XR Extensions version**: `1.4.0`
+*   **Target SDK**: `37.1`
+*   **Minimum SDK**: `29`
+*   **Kotlin Version**: `2.4.21`
+*   **AGP Version**: `9.5.2`
+*   **Gradle Version**: `9.9.2`
+
+## 📚 References & Tutorials
+
+*   [Develop UI with Jetpack Compose for XR](https://developer.android.com/develop/xr/jetpack-xr-sdk/develop-ui)
+*   [Introducing the Android XR SDK Developer Preview](https://android-developers.googleblog.com/2024/12/introducing-android-xr-sdk-developer-preview.html)
+
+## ⭐ Stargazers
+
+If you enjoy this project, please give it a star!
+Check out all the stargazers
+here: [Stargazers on GitHub](https://github.com/NicosNicolaou16/Pokedex_Compose_XR/stargazers)
+
+## 🙏 Support & Contributions
+
+This project is actively maintained. Feedback, bug reports, and feature requests are welcome! Please feel free to **open an issue** or submit a **pull request**.

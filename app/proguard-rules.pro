@@ -33,7 +33,7 @@
 #-keep class com.google.gson.stream.** { *; }
 
 # Application classes that will be serialized/deserialized over Gson
--keep class com.nicos.pokedex_compose_xr.domain.models.pokemon_response_model.PokemonResponse.** { <fields>; }
+-keep class com.nicos.pokedex_compose_xr.data.di.network.pokemon_response_model.PokemonResponse.** { <fields>; }
 -keep class com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonInfoEntity.** { <fields>; }
 
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
@@ -120,3 +120,5 @@
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
 -dontwarn org.conscrypt.ConscryptHostnameVerifier
 # End OkHttp proguard rules
+
+-keep class * extends androidx.room3.RoomDatabase { <init>(); }

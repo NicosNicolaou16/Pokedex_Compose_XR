@@ -35,7 +35,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
@@ -177,7 +177,7 @@ fun StatView(
     ) {
         Column {
             Text(
-                text = pokemonDetailsViewModel.statsEntity?.statName?.upperCaseFirstLetter() ?: "",
+                text = pokemonDetailsViewModel.statsUi?.statName?.upperCaseFirstLetter() ?: "",
                 style = TextStyle(color = Color.White, fontSize = 19.sp),
                 modifier = Modifier.padding(
                     start = 15.dp,
@@ -186,7 +186,7 @@ fun StatView(
                 )
             )
             LinearPercentage(
-                currentPercentage = pokemonDetailsViewModel.statsEntity?.baseStat?.toFloat()
+                currentPercentage = pokemonDetailsViewModel.statsUi?.baseStat?.toFloat()
                     ?: 0.0F,
                 maxPercentage = pokemonDetailsViewModel.maxValue?.toFloat() ?: 200F,
                 heightPercentageBackground = 25,

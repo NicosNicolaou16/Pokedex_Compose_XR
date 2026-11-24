@@ -2,23 +2,26 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.parcelize)
+    alias(libs.plugins.androidx.room)
+    // Baselines Profile
+    alias(libs.plugins.androidx.baselineprofile)
 }
 
 android {
     namespace = "com.nicos.pokedex_compose_xr"
-    buildToolsVersion = "36.0.0"
-    compileSdk = 36
+    buildToolsVersion = "37.0.0"
+    compileSdk = 37
+    compileSdkMinor = 1
 
     defaultConfig {
         applicationId = "com.nicos.pokedex_compose_xr"
         minSdk = 29
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -47,14 +50,20 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.fromTarget("21")
-            freeCompilerArgs = listOf("-Xannotation-default-target=param-property")
-        }
-    }
     buildFeatures {
         compose = true
+    }
+}
+
+room3 {
+    schemaDirectory("$projectDir/schemas")
+}
+
+kotlin {
+    compilerOptions {
+        languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_4
+        jvmTarget = JvmTarget.fromTarget("21")
+        freeCompilerArgs = listOf("-Xannotation-default-target=param-property")
     }
 }
 
@@ -78,7 +87,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigate.compose)
     implementation(libs.androidx.hilt.compose)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.runtime.livedata)
@@ -88,14 +96,11 @@ dependencies {
     // Room Database
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
     // Retrofit
     implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
+    implementation(libs.retrofit.kotlinx.serialization)
     // OkHttp
     implementation(libs.okHttp)
-    // Gson
-    implementation(libs.gson)
     // Coil
     implementation(libs.coil)
     // Coroutines
@@ -111,6 +116,9 @@ dependencies {
     ksp(libs.hilt.compiler)
     // Palette
     implementation(libs.androidx.palette.ktx)
+    // Baselines Profile
+    implementation(libs.androidx.profileinstaller)
+    "baselineProfile"(project(":baselineprofile"))
     // Unit Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

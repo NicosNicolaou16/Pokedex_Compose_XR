@@ -1,8 +1,8 @@
 package com.nicos.pokedex_compose_xr.data.room_database.entities.dao
 
-import androidx.room.Dao
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room3.Dao
+import androidx.room3.Query
+import androidx.room3.Transaction
 import com.nicos.pokedex_compose_xr.data.room_database.entities.StatsEntity
 import com.nicos.pokedex_compose_xr.data.room_database.init_database.BaseDao
 
@@ -11,7 +11,7 @@ interface StatsDao : BaseDao<StatsEntity, MutableList<StatsEntity>> {
 
     @Transaction
     @Query("SELECT * FROM statsentity WHERE pokemonName=:name")
-    suspend fun getPokemonStatsByName(name: String): MutableList<StatsEntity>?
+    suspend fun getPokemonStatsByName(name: String): MutableList<StatsEntity>
 
     @Transaction
     @Query("DELETE FROM statsentity")

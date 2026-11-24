@@ -1,10 +1,7 @@
-@file:OptIn(ExperimentalSharedTransitionApi::class)
-
 package com.nicos.pokedex_compose_xr.presentation.pokemon_list_screen
 
 import android.annotation.SuppressLint
 import androidx.activity.SystemBarStyle
-import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,7 +27,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.xr.compose.spatial.Subspace
 import androidx.xr.compose.subspace.SpatialPanel
 import androidx.xr.compose.subspace.SpatialRow
@@ -42,8 +39,8 @@ import androidx.xr.compose.subspace.layout.width
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
+import com.nicos.pokedex_compose_xr.data.mappers.PokemonUi
 import com.nicos.pokedex_compose_xr.presentation.pokemon_details_screen.models.SelectedPokemonModel
-import com.nicos.pokedex_compose_xr.data.room_database.entities.PokemonEntity
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.CustomToolbar
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.ShowDialog
 import com.nicos.pokedex_compose_xr.presentation.generic_compose_views.StartDefaultLoader
@@ -63,13 +60,13 @@ fun PokemonListScreen(
             SubspaceModifier
                 .height(1000.dp)
                 .width(1500.dp)
-                .movable()
-                .resizable()
         ) {
             SpatialPanel(
                 SubspaceModifier
                     .height(900.dp)
                     .width(500.dp)
+                    .movable(enabled = true)
+                    .resizable(),
             ) {
                 Scaffold(topBar = {
                     CustomToolbar(
@@ -112,7 +109,7 @@ fun PokemonListScreen(
 
 @Composable
 fun GridViewPokemonList(
-    listener: (PokemonEntity) -> Unit,
+    listener: (PokemonUi) -> Unit,
     paddingValues: PaddingValues,
     pokemonListViewModel: PokemonListViewModel = hiltViewModel()
 ) {
@@ -130,7 +127,7 @@ fun GridViewPokemonList(
         }) { pokemon ->
             LoadPokemonImage(
                 listener = listener,
-                pokemonEntity = pokemon
+                pokemonUi = pokemon
             )
         }
         item {
@@ -146,15 +143,15 @@ fun GridViewPokemonList(
 
 @Composable
 fun LoadPokemonImage(
-    listener: (PokemonEntity) -> Unit,
-    pokemonEntity: PokemonEntity
+    listener: (PokemonUi) -> Unit,
+    pokemonUi: PokemonUi
 ) {
     val context = LocalContext.current
     Card(
         modifier = Modifier
             .padding(5.dp)
             .clickable {
-                listener(pokemonEntity)
+                listener(pokemonUi)
             },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 0.dp
@@ -169,7 +166,7 @@ fun LoadPokemonImage(
     ) {
         AsyncImage(
             model = ImageRequest.Builder(context = context).apply {
-                data(pokemonEntity.imageUrl)
+                data(pokemonUi.imageUrl)
                 placeholder(getProgressDrawable(context))
                 error(android.R.drawable.stat_notify_error)
                 fallback(android.R.drawable.stat_notify_error)
